@@ -1,0 +1,17 @@
+{
+  "name": "gcommerce",
+  "version": "1.0.0",
+  "description": "assets for gcommerce",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^1.11.0"
+  }
+}

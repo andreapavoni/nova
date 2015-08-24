@@ -12,7 +12,7 @@ config :gcommerce, Gcommerce.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: []
+  watchers: [{Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}]
 
 # Watch static and templates for browser reloading.
 config :gcommerce, Gcommerce.Endpoint,
