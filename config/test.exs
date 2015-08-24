@@ -15,7 +15,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :gcommerce, Gcommerce.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "andrea",
+  password: "",
   database: "gcommerce_test",
   pool: Ecto.Adapters.SQL.Sandbox
