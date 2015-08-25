@@ -1,19 +1,16 @@
-defmodule Gcommerce.Product do
+defmodule Gcommerce.Variant do
   use Gcommerce.Web, :model
 
-  schema "products" do
-    field :name, :string
-    field :slug, :string
-    field :description, :string
+  schema "variants" do
     field :sku, :string
     field :price, :decimal
 
-    has_many :variants, Gcommerce.Variant
+    belongs_to :product, Gcommerce.Product
 
     timestamps
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(product_id)
   @optional_fields ~w()
 
   @doc """
