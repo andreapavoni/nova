@@ -16,3 +16,4 @@ erl_crash.dump
 /config/prod.secret.exs
 
 node_modules
+cover

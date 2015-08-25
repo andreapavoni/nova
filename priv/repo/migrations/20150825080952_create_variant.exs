@@ -5,11 +5,11 @@ defmodule Gcommerce.Repo.Migrations.CreateVariant do
     create table(:variants) do
       add :sku, :string
       add :price, :decimal, precision: 10, scale: 2
-      add :product, references(:products)
+      add :product_id, references(:products)
 
       timestamps
     end
-    create index(:variants, [:product])
+    create index(:variants, [:product_id])
 
   end
 end
