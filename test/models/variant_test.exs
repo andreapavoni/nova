@@ -3,7 +3,7 @@ defmodule Gcommerce.VariantTest do
 
   alias Gcommerce.Variant
 
-  @valid_attrs %{price: "120.5", sku: "some content"}
+  @valid_attrs %{price: "120.5", sku: "some content", product_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

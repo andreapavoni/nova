@@ -1,16 +1,16 @@
-defmodule Gcommerce.OptionType do
+defmodule Gcommerce.OptionValue do
   use Gcommerce.Web, :model
 
-  schema "option_types" do
+  schema "option_values" do
     field :name, :string
     field :display_name, :string
 
-    has_many :option_values, Gcommerce.OptionValue
+    belongs_to :option_type, Gcommerce.OptionType
 
     timestamps
   end
 
-  @required_fields ~w(name display_name)
+  @required_fields ~w(name display_name option_type_id)
   @optional_fields ~w()
 
   @doc """
