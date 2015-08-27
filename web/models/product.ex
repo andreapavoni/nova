@@ -2,12 +2,12 @@ defmodule Gcommerce.Product do
   use Gcommerce.Web, :model
 
   schema "products" do
+    has_many :variants, Gcommerce.Variant, on_delete: :fetch_and_delete
+
     field :name, :string
     field :description, :string
     field :sku, :string
     field :price, :decimal
-
-    has_many :variants, Gcommerce.Variant, on_delete: :delete_all
 
     timestamps
   end

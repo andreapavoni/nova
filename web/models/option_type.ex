@@ -2,10 +2,14 @@ defmodule Gcommerce.OptionType do
   use Gcommerce.Web, :model
 
   schema "option_types" do
+    has_many :variant_option_types,
+      MyApp.VariantOptionType,
+      on_delete: :delete_all
+    has_many :variants, through: [:variant_option_types, :variants]
+    has_many :option_values, Gcommerce.OptionValue, on_delete: :delete_all
+
     field :name, :string
     field :display_name, :string
-
-    has_many :option_values, Gcommerce.OptionValue, on_delete: :delete_all
 
     timestamps
   end
