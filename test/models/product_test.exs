@@ -2,13 +2,15 @@ defmodule Gcommerce.ProductTest do
   use Gcommerce.ModelCase
 
   alias Gcommerce.Product
+  alias Gcommerce.Repo
+
+  import Gcommerce.Fixtures
 
   @valid_attrs %{
     description: "some content",
     name: "some content",
-    price: "120.5",
-    sku: "some content",
-    slug: "some content"
+    price: 120.5,
+    sku: "ABC"
   }
 
   test "changeset with valid attributes" do
@@ -31,5 +33,16 @@ defmodule Gcommerce.ProductTest do
     error = {:name, {"should be at most %{count} characters", [count: 200]}}
 
     assert error in errors_on(%Product{}, attrs)
+  end
+
+  test "changeset with sku not unique" do
+    product = fixture(:product, sku: "ABC")
+
+    product |> Repo.insert
+
+    {:error, changeset} = product |> Repo.insert
+
+    refute changeset.valid?
+    assert {:sku, "has already been taken"} in changeset.errors
   end
 end

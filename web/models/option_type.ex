@@ -5,7 +5,7 @@ defmodule Gcommerce.OptionType do
     field :name, :string
     field :display_name, :string
 
-    has_many :option_values, Gcommerce.OptionValue
+    has_many :option_values, Gcommerce.OptionValue, on_delete: :delete_all
 
     timestamps
   end

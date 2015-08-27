@@ -24,5 +24,6 @@ defmodule Gcommerce.OptionValue do
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:name, min: 3, max: 200)
     |> validate_length(:display_name, min: 3, max: 200)
+    |> foreign_key_constraint(:option_type_id)
   end
 end

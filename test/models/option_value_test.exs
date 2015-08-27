@@ -45,4 +45,12 @@ defmodule Gcommerce.OptionValueTest do
     assert error in errors_on(%OptionValue{}, attrs)
   end
 
+  test "changeset with non existent option_type" do
+    attrs = %{@valid_attrs | option_type_id: -1}
+    {:error, changeset} = OptionValue.changeset(%OptionValue{}, attrs) |> Repo.insert
+
+    refute changeset.valid?
+    assert {:option_type_id, "does not exist"} in changeset.errors
+  end
+
 end

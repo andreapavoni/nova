@@ -4,13 +4,12 @@ defmodule Gcommerce.Repo.Migrations.CreateProduct do
   def change do
     create table(:products) do
       add :name, :string
-      add :slug, :string
       add :description, :text
       add :sku, :string
       add :price, :decimal, precision: 10, scale: 2
 
       timestamps
     end
-
+    create unique_index(:products, [:sku])
   end
 end
