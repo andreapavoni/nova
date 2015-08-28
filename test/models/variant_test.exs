@@ -1,9 +1,7 @@
 defmodule Gcommerce.VariantTest do
   use Gcommerce.ModelCase
-
   alias Gcommerce.Variant
   alias Gcommerce.Repo
-
   import Gcommerce.Fixtures
 
   @valid_attrs %{

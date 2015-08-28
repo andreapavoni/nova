@@ -1,6 +1,6 @@
 defmodule Gcommerce.OptionTypeTest do
   use Gcommerce.ModelCase
-
+  import Gcommerce.Fixtures
   alias Gcommerce.OptionType
 
   @valid_attrs %{display_name: "some content", name: "some content"}
@@ -12,6 +12,16 @@ defmodule Gcommerce.OptionTypeTest do
 
   test "changeset with invalid attributes" do
     refute OptionType.changeset(%OptionType{}, %{}).valid?
+  end
+
+  test "changeset with name not unique" do
+    option_type = fixture(:option_type, name: "some name")
+    option_type |> Repo.insert
+
+    {:error, changeset} = option_type |> Repo.insert
+
+    refute changeset.valid?
+    assert {:name, "has already been taken"} in changeset.errors
   end
 
   test "changeset with name length shorter than 3" do

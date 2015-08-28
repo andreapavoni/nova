@@ -5,17 +5,18 @@ defmodule Gcommerce.Fixtures.Variants do
   import Gcommerce.TestUtils
 
   def fixture(:variant, attrs) do
-    {:ok, product} = case attrs[:product_id] do
+    product_id = case attrs[:product_id] do
       nil ->
-        Products.fixture(:product, []) |> Repo.insert
+        {:ok, product} = Products.fixture(:product, []) |> Repo.insert
+        product.id
       _   ->
         attrs[:product_id]
     end
 
     params = %{
       price: 120.5,
-      sku: "SKU-#{TestUtilsrandom}",
-      product_id: product.id
+      sku: "SKU-#{random}",
+      product_id: product_id
     } |> Map.merge(Enum.into(attrs, %{}))
 
     Variant.changeset(%Variant{}, params)

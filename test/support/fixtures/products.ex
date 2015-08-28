@@ -7,7 +7,7 @@ defmodule Gcommerce.Fixtures.Products do
       name: "some name",
       description: "some desc",
       price: 10.0,
-      sku: "SKU-#{TestUtilsrandom}"
+      sku: "SKU-#{random}"
     } |> Map.merge(Enum.into(attrs, %{}))
 
     Product.changeset(%Product{}, params)

@@ -9,5 +9,6 @@ defmodule Gcommerce.Repo.Migrations.CreateOptionType do
       timestamps
     end
 
+    create unique_index(:option_types, [:name])
   end
 end

@@ -23,6 +23,7 @@ defmodule Gcommerce.OptionType do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:name, min: 3, max: 200)
+    |> unique_constraint(:name)
     |> validate_length(:display_name, min: 3, max: 200)
   end
 end

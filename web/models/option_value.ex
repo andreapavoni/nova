@@ -29,6 +29,6 @@ defmodule Gcommerce.OptionValue do
     |> validate_length(:name, min: 3, max: 200)
     |> validate_length(:display_name, min: 3, max: 200)
     |> foreign_key_constraint(:option_type_id)
-    # TODO: validate uniqueness of name on option_type_id
+    |> unique_constraint(:name, name: :option_values_name_option_type_id_index)
   end
 end
