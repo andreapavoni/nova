@@ -6,7 +6,7 @@ defmodule Gcommerce.VariantOptionTypeTest do
 
   @attrs %{option_type_id: 1, variant_id: 1}
 
-  setup context do
+  setup do
     {:ok, variant} = fixture(:variant, []) |> Repo.insert
     {:ok, option_type} = fixture(:option_type, []) |> Repo.insert
 
