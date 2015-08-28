@@ -9,7 +9,8 @@ defmodule Gcommerce.Repo.Migrations.CreateVariant do
 
       timestamps
     end
-    create index(:variants, [:product_id])
 
+    create index(:variants, [:product_id])
+    create unique_index(:variants, [:sku])
   end
 end

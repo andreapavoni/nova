@@ -10,6 +10,7 @@ defmodule Gcommerce.Repo.Migrations.CreateProduct do
 
       timestamps
     end
+    
     create unique_index(:products, [:sku])
   end
 end

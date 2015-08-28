@@ -27,5 +27,6 @@ defmodule Gcommerce.Variant do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> foreign_key_constraint(:product_id)
+    |> unique_constraint(:sku)
   end
 end

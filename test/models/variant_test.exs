@@ -4,6 +4,8 @@ defmodule Gcommerce.VariantTest do
   alias Gcommerce.Variant
   alias Gcommerce.Repo
 
+  import Gcommerce.Fixtures
+
   @valid_attrs %{
     price: 120.5,
     sku: "some content",
@@ -27,5 +29,16 @@ defmodule Gcommerce.VariantTest do
 
     refute changeset.valid?
     assert {:product_id, "does not exist"} in changeset.errors
+  end
+
+  test "changeset with sku not unique" do
+    variant = fixture(:variant, sku: "ABC")
+
+    variant |> Repo.insert
+
+    {:error, changeset} = variant |> Repo.insert
+
+    refute changeset.valid?
+    assert {:sku, "has already been taken"} in changeset.errors
   end
 end
