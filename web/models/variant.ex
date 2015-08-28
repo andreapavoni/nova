@@ -2,11 +2,11 @@ defmodule Gcommerce.Variant do
   use Gcommerce.Web, :model
 
   schema "variants" do
-    has_many :variant_option_types,
-      MyApp.VariantOptionType,
-      on_delete: :delete_all
-    has_many :option_types, through: [:variant_option_types, :option_types]
     belongs_to :product, Gcommerce.Product
+    has_many :option_value_variants,
+      MyApp.OptionValueVariant,
+      on_delete: :delete_all
+    has_many :option_values, through: [:option_value_variants, :option_values]
 
     field :sku, :string
     field :price, :decimal

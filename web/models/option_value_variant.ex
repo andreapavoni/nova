@@ -1,12 +1,12 @@
-defmodule Gcommerce.VariantOptionType do
+defmodule Gcommerce.OptionValueVariant do
   use Gcommerce.Web, :model
 
-  schema "variant_option_types" do
+  schema "option_value_variants" do
     belongs_to :variant, Gcommerce.Variant
-    belongs_to :option_type, Gcommerce.OptionType
+    belongs_to :option_value, Gcommerce.OptionValue
   end
 
-  @required_fields ~w(variant_id option_type_id)
+  @required_fields ~w(variant_id option_value_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -17,7 +17,7 @@ defmodule Gcommerce.VariantOptionType do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, ~w())
-    |> foreign_key_constraint(:option_type_id)
+    |> foreign_key_constraint(:option_value_id)
     |> foreign_key_constraint(:variant_id)
   end
 end

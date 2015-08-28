@@ -2,10 +2,14 @@ defmodule Gcommerce.OptionValue do
   use Gcommerce.Web, :model
 
   schema "option_values" do
+    belongs_to :option_type, Gcommerce.OptionType
+    has_many :option_value_variants,
+      MyApp.OptionValueVariant,
+      on_delete: :delete_all
+    has_many :variants, through: [:option_value_variants, :variants]
+
     field :name, :string
     field :display_name, :string
-
-    belongs_to :option_type, Gcommerce.OptionType
 
     timestamps
   end
@@ -25,5 +29,6 @@ defmodule Gcommerce.OptionValue do
     |> validate_length(:name, min: 3, max: 200)
     |> validate_length(:display_name, min: 3, max: 200)
     |> foreign_key_constraint(:option_type_id)
+    # TODO: validate uniqueness of name on option_type_id
   end
 end
