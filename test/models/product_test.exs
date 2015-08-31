@@ -4,7 +4,7 @@ defmodule Gcommerce.ProductTest do
   alias Gcommerce.Product
   alias Gcommerce.Repo
 
-  import Gcommerce.Fixtures
+  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     description: "some content",
@@ -36,7 +36,7 @@ defmodule Gcommerce.ProductTest do
   end
 
   test "changeset with sku not unique" do
-    product = fixture(:product, sku: "ABC")
+    product = Fixtures.product(sku: "ABC")
 
     product |> Repo.insert
 

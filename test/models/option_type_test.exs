@@ -1,6 +1,6 @@
 defmodule Gcommerce.OptionTypeTest do
   use Gcommerce.ModelCase
-  import Gcommerce.Fixtures
+  alias Gcommerce.Fixtures
   alias Gcommerce.OptionType
 
   @valid_attrs %{display_name: "some content", name: "some content"}
@@ -15,7 +15,7 @@ defmodule Gcommerce.OptionTypeTest do
   end
 
   test "changeset with name not unique" do
-    option_type = fixture(:option_type, name: "some name")
+    option_type = Fixtures.option_type(name: "some name")
     option_type |> Repo.insert
 
     {:error, changeset} = option_type |> Repo.insert

@@ -1,7 +1,7 @@
 defmodule Gcommerce.OptionValueTest do
   use Gcommerce.ModelCase
   alias Gcommerce.OptionValue
-  import Gcommerce.Fixtures
+  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     display_name: "some content",
@@ -57,8 +57,8 @@ defmodule Gcommerce.OptionValueTest do
   end
 
   test "changeset with name not unique on option_type" do
-    {:ok, option_type} = fixture(:option_type, []) |> Repo.insert
-    option_value = fixture(:option_value, option_type_id: option_type.id)
+    {:ok, option_type} = Fixtures.option_type([]) |> Repo.insert
+    option_value = Fixtures.option_value(option_type_id: option_type.id)
     option_value |> Repo.insert
 
     {:error, changeset} = option_value |> Repo.insert
@@ -66,5 +66,4 @@ defmodule Gcommerce.OptionValueTest do
     refute changeset.valid?
     assert {:name, "has already been taken"} in changeset.errors
   end
-
 end

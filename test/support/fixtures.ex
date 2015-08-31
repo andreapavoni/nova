@@ -4,20 +4,19 @@ defmodule Gcommerce.Fixtures do
   alias Gcommerce.Fixtures.Products
   alias Gcommerce.Fixtures.Variants
 
-  def fixture(:product, attrs) do
-    Products.fixture(:product, attrs)
+  def product(attrs) do
+    Products.product attrs
   end
 
-  def fixture(:variant, attrs) do
-    Variants.fixture(:variant, attrs)
+  def variant(attrs) do
+    Variants.variant attrs
   end
 
-  def fixture(:option_type, attrs) do
-    OptionTypes.fixture(:option_type, attrs)
+  def option_type(attrs) do
+    OptionTypes.option_type attrs
   end
 
-  def fixture(:option_value, attrs) do
-    OptionValues.fixture(:option_value, attrs)
+  def option_value(attrs) do
+    OptionValues.option_value attrs
   end
-
 end

@@ -4,10 +4,10 @@ defmodule Gcommerce.Fixtures.Variants do
   alias Gcommerce.Fixtures.Products
   import Gcommerce.TestUtils
 
-  def fixture(:variant, attrs) do
+  def variant(attrs) do
     product_id = case attrs[:product_id] do
       nil ->
-        {:ok, product} = Products.fixture(:product, []) |> Repo.insert
+        {:ok, product} = Products.product([]) |> Repo.insert
         product.id
       _   ->
         attrs[:product_id]

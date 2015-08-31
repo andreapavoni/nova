@@ -3,10 +3,10 @@ defmodule Gcommerce.Fixtures.OptionValues do
   alias Gcommerce.Fixtures.OptionTypes
   alias Gcommerce.Repo
 
-  def fixture(:option_value, attrs) do
+  def option_value(attrs) do
     option_type_id = case attrs[:option_type_id] do
       nil ->
-        {:ok, option_type} = OptionTypes.fixture(:option_type, []) |> Repo.insert
+        {:ok, option_type} = OptionTypes.option_type([]) |> Repo.insert
         option_type.id
       _   ->
         attrs[:option_type_id]

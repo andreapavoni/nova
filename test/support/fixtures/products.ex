@@ -2,7 +2,7 @@ defmodule Gcommerce.Fixtures.Products do
   alias Gcommerce.Product
   import Gcommerce.TestUtils
 
-  def fixture(:product, attrs) do
+  def product(attrs) do
     params = %{
       name: "some name",
       description: "some desc",

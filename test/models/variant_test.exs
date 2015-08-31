@@ -2,7 +2,7 @@ defmodule Gcommerce.VariantTest do
   use Gcommerce.ModelCase
   alias Gcommerce.Variant
   alias Gcommerce.Repo
-  import Gcommerce.Fixtures
+  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     price: 120.5,
@@ -30,7 +30,7 @@ defmodule Gcommerce.VariantTest do
   end
 
   test "changeset with sku not unique" do
-    variant = fixture(:variant, sku: "ABC")
+    variant = Fixtures.variant(sku: "ABC")
 
     variant |> Repo.insert
 

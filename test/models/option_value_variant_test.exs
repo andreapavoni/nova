@@ -1,14 +1,13 @@
 defmodule Gcommerce.OptionValueVariantTest do
   use Gcommerce.ModelCase
   alias Gcommerce.OptionValueVariant
-
-  import Gcommerce.Fixtures
+  alias Gcommerce.Fixtures
 
   @attrs %{option_value_id: 1, variant_id: 1}
 
   setup do
-    {:ok, variant} = fixture(:variant, []) |> Repo.insert
-    {:ok, option_value} = fixture(:option_value, []) |> Repo.insert
+    {:ok, variant} = Fixtures.variant(sku: "ABC") |> Repo.insert
+    {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
 
     {:ok, attrs: %{option_value_id: option_value.id, variant_id: variant.id}}
   end
