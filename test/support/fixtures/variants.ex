@@ -2,7 +2,6 @@ defmodule Gcommerce.Fixtures.Variants do
   alias Gcommerce.Repo
   alias Gcommerce.Variant
   alias Gcommerce.Fixtures.Products
-  import Gcommerce.TestUtils
 
   def variant(attrs) do
     product_id = case attrs[:product_id] do
@@ -14,8 +13,8 @@ defmodule Gcommerce.Fixtures.Variants do
     end
 
     params = %{
-      price: 120.5,
-      sku: "SKU-#{random}",
+      price: Faker.Commerce.price,
+      sku: Faker.Code.isbn,
       product_id: product_id
     } |> Map.merge(Enum.into(attrs, %{}))
 

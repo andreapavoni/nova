@@ -37,7 +37,6 @@ defmodule Gcommerce.ProductTest do
 
   test "changeset with sku not unique" do
     product = Fixtures.product(sku: "ABC")
-
     product |> Repo.insert
 
     {:error, changeset} = product |> Repo.insert
