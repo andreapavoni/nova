@@ -14,6 +14,7 @@ This TODO is organized in _topics_ just to be easier to split the work. Some of
 them depend on others, so they got a bit of sorting based on priorities.
 
 ### Products
+#### Models
 - [x] Product basic info
 - [x] Variants (the product variant)
   - [x] OptionTypes (variant options. eg: shirt-size, bag-color, ...)
