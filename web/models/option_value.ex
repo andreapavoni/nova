@@ -4,7 +4,7 @@ defmodule Gcommerce.OptionValue do
   schema "option_values" do
     belongs_to :option_type, Gcommerce.OptionType
     has_many :option_value_variants,
-      MyApp.OptionValueVariant,
+      Gcommerce.OptionValueVariant,
       on_delete: :delete_all
     has_many :variants, through: [:option_value_variants, :variants]
 

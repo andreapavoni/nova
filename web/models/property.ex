@@ -2,6 +2,11 @@ defmodule Gcommerce.Property do
   use Gcommerce.Web, :model
 
   schema "properties" do
+    has_many :product_properties,
+      Gcommerce.ProductProperty,
+      on_delete: :delete_all
+    has_many :products, through: [:product_properties, :products]
+
     field :name, :string
     field :display_name, :string
   end

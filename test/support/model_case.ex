@@ -20,6 +20,7 @@ defmodule Gcommerce.ModelCase do
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
       import Gcommerce.ModelCase
+      alias Gcommerce.Fixtures
     end
   end
 

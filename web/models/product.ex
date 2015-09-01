@@ -4,9 +4,14 @@ defmodule Gcommerce.Product do
   schema "products" do
     has_many :variants, Gcommerce.Variant, on_delete: :fetch_and_delete
     has_many :option_type_products,
-      MyApp.OptionTypeProduct,
+      Gcommerce.OptionTypeProduct,
       on_delete: :delete_all
     has_many :option_types, through: [:option_type_products, :option_types]
+
+    has_many :product_properties,
+      Gcommerce.ProductProperty,
+      on_delete: :delete_all
+    has_many :properties, through: [:product_properties, :properties]
 
     field :name, :string
     field :description, :string

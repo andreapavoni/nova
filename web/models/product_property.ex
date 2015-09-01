@@ -1,21 +1,15 @@
-defmodule Gcommerce.Variant do
+defmodule Gcommerce.ProductProperty do
   use Gcommerce.Web, :model
 
-  schema "variants" do
+  schema "product_properties" do
     belongs_to :product, Gcommerce.Product
-    has_many :option_value_variants,
-      Gcommerce.OptionValueVariant,
-      on_delete: :delete_all
-    has_many :option_values, through: [:option_value_variants, :option_values]
+    belongs_to :property, Gcommerce.Property
 
-    field :sku, :string
-    field :price, :decimal
-
-    timestamps
+    field :value, :string
   end
 
-  @required_fields ~w(product_id)
-  @optional_fields ~w(sku price)
+  @required_fields ~w(property_id value)
+  @optional_fields ~w(product_id)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -27,6 +21,7 @@ defmodule Gcommerce.Variant do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> foreign_key_constraint(:product_id)
-    |> unique_constraint(:sku)
+    |> foreign_key_constraint(:property_id)
+    |> validate_length(:value, max: 200)
   end
 end
