@@ -1,7 +1,6 @@
 defmodule Gcommerce.OptionValueVariantTest do
   use Gcommerce.ModelCase
   alias Gcommerce.OptionValueVariant
-  alias Gcommerce.Fixtures
 
   @attrs %{option_value_id: 1, variant_id: 1}
 

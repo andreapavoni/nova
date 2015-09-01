@@ -1,7 +1,6 @@
 defmodule Gcommerce.OptionValueTest do
   use Gcommerce.ModelCase
   alias Gcommerce.OptionValue
-  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     display_name: "some content",

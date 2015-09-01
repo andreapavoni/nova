@@ -2,7 +2,6 @@ defmodule Gcommerce.VariantTest do
   use Gcommerce.ModelCase
   alias Gcommerce.Variant
   alias Gcommerce.Repo
-  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     price: 120.5,

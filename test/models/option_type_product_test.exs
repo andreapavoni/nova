@@ -1,7 +1,6 @@
 defmodule Gcommerce.OptionTypeProductTest do
   use Gcommerce.ModelCase
   alias Gcommerce.OptionTypeProduct
-  alias Gcommerce.Fixtures
 
   @attrs %{option_type_id: 1, product_id: 1}
 

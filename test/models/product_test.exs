@@ -1,10 +1,7 @@
 defmodule Gcommerce.ProductTest do
   use Gcommerce.ModelCase
-
   alias Gcommerce.Product
   alias Gcommerce.Repo
-
-  alias Gcommerce.Fixtures
 
   @valid_attrs %{
     description: "some content",
