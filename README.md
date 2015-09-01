@@ -19,7 +19,7 @@ them depend on others, so they got a bit of sorting based on priorities.
 - [x] Variants (the product variant)
   - [x] OptionTypes (variant options. eg: shirt-size, bag-color, ...)
   - [x] OptionValues (variant option values. eg: red, black, small, ...)
-- [ ] Properties (product properties. eg: brand, material, gender, ...)
+- [x] Properties (product properties. eg: brand, material, gender, ...)
 - [ ] Taxonomies (nested categories)
 
 ### Orders
