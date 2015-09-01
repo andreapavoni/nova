@@ -23,8 +23,9 @@ them depend on others, so they got a bit of sorting based on priorities.
 - [ ] Taxonomies (nested categories)
 
 ### Orders
-- [ ] Order basic info
-- [ ] LineItems (product and quantity for an order)
+#### Models
+- [x] Order basic info
+- [x] LineItems (product and quantity for an order)
 
 ### Users
 - [ ] User basic info (email, password)

@@ -7,6 +7,7 @@ defmodule Gcommerce.Variant do
       Gcommerce.OptionValueVariant,
       on_delete: :delete_all
     has_many :option_values, through: [:option_value_variants, :option_values]
+    has_many :line_items, Gcommerce.LineItem # on_delete?
 
     field :sku, :string
     field :price, :decimal
