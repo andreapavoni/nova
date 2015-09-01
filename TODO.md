@@ -21,7 +21,8 @@ them depend on others, so they got a bit of sorting based on priorities.
 ### Orders
 #### Models
 - [x] Order basic info
-- [x] LineItems (product and quantity for an order)
+- [x] LineItems (product and quantity for an order)
+
 #### Integrations
 - [ ] Create Order
   - [ ] Create LineItem
