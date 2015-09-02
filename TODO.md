@@ -13,11 +13,11 @@ got a bit of sorting based on priorities.
 - [ ] Taxonomies (nested categories)
 
 #### Integrations
-- [ ] Create Product
-  - [ ] Create OptionType
-  - [ ] Create Variant
-    - [ ] Create OptionValue
-  - [ ] Create Property
+- [x] CRUD Product
+  - [ ] CRUD OptionType
+  - [ ] CRUD Variant
+    - [ ] CRUD OptionValue
+  - [ ] CRUD Property
 
 ### Orders
 #### Models
@@ -25,8 +25,8 @@ got a bit of sorting based on priorities.
 - [x] LineItems (product and quantity for an order)
 
 #### Integrations
-- [ ] Create Order
-  - [ ] Create LineItem
+- [ ] CRUD Order
+  - [ ] CRUD LineItem
   - [ ] Calculate Order total
 
 
