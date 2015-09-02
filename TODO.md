@@ -1,6 +1,7 @@
-## TODO / ROADMAP FOR CORE
-This TODO is organized in _topics_ just to be easier to split the work. Some of
-them depend on others, so they got a bit of sorting based on priorities.
+## TODO / CURRENT STATUS
+This TODO is a sort of work in progress organized in _topics_ just to make it easier
+to split the work across collaborators. Some of them depend on others, so they
+got a bit of sorting based on priorities.
 
 ### Products
 #### Models
