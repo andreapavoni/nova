@@ -1,7 +1,7 @@
 defmodule Gcommerce.OptionType do
   use Gcommerce.Web, :model
 
-  schema "option_types" do
+  schema "gcommerce_option_types" do
     has_many :option_values, Gcommerce.OptionValue, on_delete: :delete_all
     has_many :option_type_products,
       Gcommerce.OptionTypeProduct,

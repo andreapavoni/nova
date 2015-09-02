@@ -1,7 +1,7 @@
 defmodule Gcommerce.OptionTypeProduct do
   use Gcommerce.Web, :model
 
-  schema "option_type_products" do
+  schema "gcommerce_option_type_products" do
     belongs_to :product, Gcommerce.Product
     belongs_to :option_type, Gcommerce.OptionType
   end

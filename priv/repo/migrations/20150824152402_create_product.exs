@@ -2,7 +2,7 @@ defmodule Gcommerce.Repo.Migrations.CreateProduct do
   use Ecto.Migration
 
   def change do
-    create table(:products) do
+    create table(:gcommerce_products) do
       add :name, :string
       add :description, :text
       add :sku, :string
@@ -10,7 +10,7 @@ defmodule Gcommerce.Repo.Migrations.CreateProduct do
 
       timestamps
     end
-    
-    create unique_index(:products, [:sku])
+
+    create unique_index(:gcommerce_products, [:sku])
   end
 end

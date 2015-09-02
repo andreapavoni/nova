@@ -1,7 +1,7 @@
 defmodule Gcommerce.ProductProperty do
   use Gcommerce.Web, :model
 
-  schema "product_properties" do
+  schema "gcommerce_product_properties" do
     belongs_to :product, Gcommerce.Product
     belongs_to :property, Gcommerce.Property
 

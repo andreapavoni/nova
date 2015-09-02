@@ -1,7 +1,7 @@
 defmodule Gcommerce.Product do
   use Gcommerce.Web, :model
 
-  schema "products" do
+  schema "gcommerce_products" do
     has_many :variants, Gcommerce.Variant, on_delete: :fetch_and_delete
     has_many :option_type_products,
       Gcommerce.OptionTypeProduct,

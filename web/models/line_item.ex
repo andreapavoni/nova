@@ -1,7 +1,7 @@
 defmodule Gcommerce.LineItem do
   use Gcommerce.Web, :model
 
-  schema "line_items" do
+  schema "gcommerce_line_items" do
     field :quantity, :integer
     belongs_to :order, Gcommerce.Order
     belongs_to :variant, Gcommerce.Variant

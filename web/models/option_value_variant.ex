@@ -1,7 +1,7 @@
 defmodule Gcommerce.OptionValueVariant do
   use Gcommerce.Web, :model
 
-  schema "option_value_variants" do
+  schema "gcommerce_option_value_variants" do
     belongs_to :variant, Gcommerce.Variant
     belongs_to :option_value, Gcommerce.OptionValue
   end

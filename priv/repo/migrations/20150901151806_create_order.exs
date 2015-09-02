@@ -2,7 +2,7 @@ defmodule Gcommerce.Repo.Migrations.CreateOrder do
   use Ecto.Migration
 
   def change do
-    create table(:orders) do
+    create table(:gcommerce_orders) do
       add :total, :decimal
 
       timestamps

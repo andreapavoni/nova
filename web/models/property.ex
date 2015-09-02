@@ -1,7 +1,7 @@
 defmodule Gcommerce.Property do
   use Gcommerce.Web, :model
 
-  schema "properties" do
+  schema "gcommerce_properties" do
     has_many :product_properties,
       Gcommerce.ProductProperty,
       on_delete: :delete_all

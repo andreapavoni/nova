@@ -1,7 +1,7 @@
 defmodule Gcommerce.Order do
   use Gcommerce.Web, :model
 
-  schema "orders" do
+  schema "gcommerce_orders" do
     has_many :line_items, Gcommerce.LineItem # on_delete?
 
     field :total, :decimal
