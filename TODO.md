@@ -12,19 +12,19 @@ got a bit of sorting based on priorities.
 - [x] Properties (product properties. eg: brand, material, gender, ...)
 - [ ] Taxonomies (nested categories)
 
-#### Integrations
+#### Commands and Queries
 - [x] CRUD Product
   - [ ] CRUD OptionType
-  - [ ] CRUD Variant
+  - [x] CRUD Variant
     - [ ] CRUD OptionValue
-  - [ ] CRUD Property
+  - [x] CRUD Property
 
 ### Orders
 #### Models
 - [x] Order basic info
 - [x] LineItems (product and quantity for an order)
 
-#### Integrations
+#### Commands and Queries
 - [ ] CRUD Order
   - [ ] CRUD LineItem
   - [ ] Calculate Order total
