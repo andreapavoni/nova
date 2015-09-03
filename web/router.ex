@@ -1,5 +1,5 @@
-defmodule Gcommerce.Router do
-  use Gcommerce.Web, :router
+defmodule Nova.Router do
+  use Nova.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,14 @@ defmodule Gcommerce.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Gcommerce do
+  scope "/", Nova do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Gcommerce do
+  # scope "/api", Nova do
   #   pipe_through :api
   # end
 end

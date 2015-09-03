@@ -1,9 +1,9 @@
-defmodule Gcommerce.Property do
-  use Gcommerce.Web, :model
+defmodule Nova.Property do
+  use Nova.Web, :model
 
-  schema "gcommerce_properties" do
+  schema "nova_properties" do
     has_many :product_properties,
-      Gcommerce.ProductProperty,
+      Nova.ProductProperty,
       on_delete: :delete_all
     has_many :products, through: [:product_properties, :products]
 

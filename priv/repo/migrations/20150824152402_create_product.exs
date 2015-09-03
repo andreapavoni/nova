@@ -1,8 +1,8 @@
-defmodule Gcommerce.Repo.Migrations.CreateProduct do
+defmodule Nova.Repo.Migrations.CreateProduct do
   use Ecto.Migration
 
   def change do
-    create table(:gcommerce_products) do
+    create table(:nova_products) do
       add :name, :string
       add :description, :text
       add :sku, :string
@@ -11,6 +11,6 @@ defmodule Gcommerce.Repo.Migrations.CreateProduct do
       timestamps
     end
 
-    create unique_index(:gcommerce_products, [:sku])
+    create unique_index(:nova_products, [:sku])
   end
 end

@@ -1,7 +1,7 @@
-defmodule Gcommerce.ProductTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Product
-  alias Gcommerce.Repo
+defmodule Nova.ProductTest do
+  use Nova.ModelCase
+  alias Nova.Product
+  alias Nova.Repo
 
   @valid_attrs %{
     description: "some content",

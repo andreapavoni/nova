@@ -1,6 +1,6 @@
-defmodule Gcommerce.Queries.VariantQueries do
-  alias Gcommerce.Variant
-  alias Gcommerce.Repo
+defmodule Nova.Queries.VariantQueries do
+  alias Nova.Variant
+  alias Nova.Repo
 
   def get_product_by_id(id) do
     Repo.get!(Variant, id)

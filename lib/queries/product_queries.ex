@@ -1,6 +1,6 @@
-defmodule Gcommerce.Queries.ProductQueries do
-  alias Gcommerce.Product
-  alias Gcommerce.Repo
+defmodule Nova.Queries.ProductQueries do
+  alias Nova.Product
+  alias Nova.Repo
 
   def get_product_by_id(id) do
     Repo.get!(Product, id)

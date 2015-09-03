@@ -1,6 +1,6 @@
-defmodule Gcommerce.OptionTypeProductTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.OptionTypeProduct
+defmodule Nova.OptionTypeProductTest do
+  use Nova.ModelCase
+  alias Nova.OptionTypeProduct
 
   @attrs %{option_type_id: 1, product_id: 1}
 

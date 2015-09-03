@@ -1,7 +1,7 @@
-defmodule Gcommerce.VariantTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Variant
-  alias Gcommerce.Repo
+defmodule Nova.VariantTest do
+  use Nova.ModelCase
+  alias Nova.Variant
+  alias Nova.Repo
 
   @valid_attrs %{
     price: 120.5,

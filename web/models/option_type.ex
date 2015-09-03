@@ -1,10 +1,10 @@
-defmodule Gcommerce.OptionType do
-  use Gcommerce.Web, :model
+defmodule Nova.OptionType do
+  use Nova.Web, :model
 
-  schema "gcommerce_option_types" do
-    has_many :option_values, Gcommerce.OptionValue, on_delete: :delete_all
+  schema "nova_option_types" do
+    has_many :option_values, Nova.OptionValue, on_delete: :delete_all
     has_many :option_type_products,
-      Gcommerce.OptionTypeProduct,
+      Nova.OptionTypeProduct,
       on_delete: :delete_all
     has_many :products, through: [:option_type_products, :products]
 

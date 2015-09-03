@@ -1,16 +1,16 @@
-defmodule Gcommerce.Repo.Migrations.CreateVariant do
+defmodule Nova.Repo.Migrations.CreateVariant do
   use Ecto.Migration
 
   def change do
-    create table(:gcommerce_variants) do
+    create table(:nova_variants) do
       add :sku, :string
       add :price, :decimal, precision: 10, scale: 2
-      add :product_id, references(:gcommerce_products)
+      add :product_id, references(:nova_products)
 
       timestamps
     end
 
-    create index(:gcommerce_variants, [:product_id])
-    create unique_index(:gcommerce_variants, [:sku])
+    create index(:nova_variants, [:product_id])
+    create unique_index(:nova_variants, [:sku])
   end
 end

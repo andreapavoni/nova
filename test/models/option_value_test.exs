@@ -1,6 +1,6 @@
-defmodule Gcommerce.OptionValueTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.OptionValue
+defmodule Nova.OptionValueTest do
+  use Nova.ModelCase
+  alias Nova.OptionValue
 
   @valid_attrs %{
     display_name: "some content",

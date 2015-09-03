@@ -1,8 +1,8 @@
-defmodule Gcommerce.Order do
-  use Gcommerce.Web, :model
+defmodule Nova.Order do
+  use Nova.Web, :model
 
-  schema "gcommerce_orders" do
-    has_many :line_items, Gcommerce.LineItem # on_delete?
+  schema "nova_orders" do
+    has_many :line_items, Nova.LineItem # on_delete?
 
     field :total, :decimal
 

@@ -1,7 +1,7 @@
 {
-  "name": "gcommerce",
+  "name": "nova",
   "version": "1.0.0",
-  "description": "assets for gcommerce",
+  "description": "assets for nova",
   "main": "index.js",
   "directories": {
     "test": "test"

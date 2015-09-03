@@ -1,6 +1,6 @@
-defmodule Gcommerce.ProductPropertyTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.ProductProperty
+defmodule Nova.ProductPropertyTest do
+  use Nova.ModelCase
+  alias Nova.ProductProperty
 
   @valid_attrs %{property_id: 1, value: "test"}
   @invalid_attrs %{property_id: -1, product_id: -1, value: "test" }

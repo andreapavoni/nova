@@ -1,7 +1,7 @@
-defmodule Gcommerce.Queries.ProductQueriesTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Queries.ProductQueries
-  alias Gcommerce.Product
+defmodule Nova.Queries.ProductQueriesTest do
+  use Nova.ModelCase
+  alias Nova.Queries.ProductQueries
+  alias Nova.Product
 
   test "get_product_by_id/1 when product exists" do
     {:ok, product} = Fixtures.product([]) |> Repo.insert

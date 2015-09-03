@@ -1,7 +1,7 @@
-defmodule Gcommerce.Commands.PropertyCommandsTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Commands.PropertyCommands
-  alias Gcommerce.Property
+defmodule Nova.Commands.PropertyCommandsTest do
+  use Nova.ModelCase
+  alias Nova.Commands.PropertyCommands
+  alias Nova.Property
 
   @property_params Fixtures.property([]).changes
 

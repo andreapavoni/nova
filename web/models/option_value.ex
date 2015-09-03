@@ -1,10 +1,10 @@
-defmodule Gcommerce.OptionValue do
-  use Gcommerce.Web, :model
+defmodule Nova.OptionValue do
+  use Nova.Web, :model
 
-  schema "gcommerce_option_values" do
-    belongs_to :option_type, Gcommerce.OptionType
+  schema "nova_option_values" do
+    belongs_to :option_type, Nova.OptionType
     has_many :option_value_variants,
-      Gcommerce.OptionValueVariant,
+      Nova.OptionValueVariant,
       on_delete: :delete_all
     has_many :variants, through: [:option_value_variants, :variants]
 
@@ -27,7 +27,7 @@ defmodule Gcommerce.OptionValue do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:name, min: 3, max: 200)
-    |> unique_constraint(:name, name: :gcommerce_option_values_name_option_type_id_index)
+    |> unique_constraint(:name, name: :nova_option_values_name_option_type_id_index)
     |> validate_length(:display_name, min: 3, max: 200)
     |> foreign_key_constraint(:option_type_id)
   end

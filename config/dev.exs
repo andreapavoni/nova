@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :gcommerce, Gcommerce.Endpoint,
+config :nova, Nova.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -15,7 +15,7 @@ config :gcommerce, Gcommerce.Endpoint,
   watchers: [{Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}]
 
 # Watch static and templates for browser reloading.
-config :gcommerce, Gcommerce.Endpoint,
+config :nova, Nova.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
@@ -33,9 +33,9 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :gcommerce, Gcommerce.Repo,
+config :nova, Nova.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "andrea",
   password: "",
-  database: "gcommerce_dev",
+  database: "nova_dev",
   pool_size: 10

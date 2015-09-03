@@ -1,6 +1,6 @@
-defmodule Gcommerce.Commands.ProductCommands do
-  alias Gcommerce.Product
-  alias Gcommerce.Repo
+defmodule Nova.Commands.ProductCommands do
+  alias Nova.Product
+  alias Nova.Repo
 
   def create_product(params \\ %{}) do
     Product.changeset(%Product{}, params)

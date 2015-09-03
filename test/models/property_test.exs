@@ -1,7 +1,7 @@
-defmodule Gcommerce.PropertyTest do
-  use Gcommerce.ModelCase
+defmodule Nova.PropertyTest do
+  use Nova.ModelCase
 
-  alias Gcommerce.Property
+  alias Nova.Property
 
   @valid_attrs %{display_name: "some content", name: "some content"}
   @long_str String.duplicate("a", 201)

@@ -1,14 +1,14 @@
-defmodule Gcommerce.Endpoint do
-  use Phoenix.Endpoint, otp_app: :gcommerce
+defmodule Nova.Endpoint do
+  use Phoenix.Endpoint, otp_app: :nova
 
-  socket "/socket", Gcommerce.UserSocket
+  socket "/socket", Nova.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :gcommerce, gzip: false,
+    at: "/", from: :nova, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -32,8 +32,8 @@ defmodule Gcommerce.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_gcommerce_key",
+    key: "_nova_key",
     signing_salt: "jKto/x4Q"
 
-  plug Gcommerce.Router
+  plug Nova.Router
 end

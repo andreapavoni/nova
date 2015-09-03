@@ -1,6 +1,6 @@
-defmodule Gcommerce.OptionValueVariantTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.OptionValueVariant
+defmodule Nova.OptionValueVariantTest do
+  use Nova.ModelCase
+  alias Nova.OptionValueVariant
 
   @attrs %{option_value_id: 1, variant_id: 1}
 

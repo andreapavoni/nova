@@ -1,6 +1,6 @@
-defmodule Gcommerce.Fixtures.Orders do
-  alias Gcommerce.Repo
-  alias Gcommerce.Order
+defmodule Nova.Fixtures.Orders do
+  alias Nova.Repo
+  alias Nova.Order
 
   def order(attrs) do
     params = %{

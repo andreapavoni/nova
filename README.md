@@ -1,4 +1,4 @@
-# Gcommerce
+# Nova
 
 An attempt to port/rebuild [Spree](http://spreecommerce.com) with [Phoenix](http://www.phoenixframework.org/).
 
@@ -42,9 +42,6 @@ Don't know right now, _world domination™_? :-)
 2. Fork this repo
 3. Write code (and tests)
 4. Open a PR
-
-## Branding
-To be honest, `Gcommerce` is just a temporary name, We didn't dedicated too much efforts to choose a good one. If you have a better proposal, [let's talk](/issues/1)!
 
 ## Setup
 

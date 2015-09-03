@@ -1,5 +1,5 @@
-defmodule Gcommerce.PageControllerTest do
-  use Gcommerce.ConnCase
+defmodule Nova.PageControllerTest do
+  use Nova.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"

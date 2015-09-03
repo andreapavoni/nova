@@ -1,13 +1,13 @@
-defmodule Gcommerce.Variant do
-  use Gcommerce.Web, :model
+defmodule Nova.Variant do
+  use Nova.Web, :model
 
-  schema "gcommerce_variants" do
-    belongs_to :product, Gcommerce.Product
+  schema "nova_variants" do
+    belongs_to :product, Nova.Product
     has_many :option_value_variants,
-      Gcommerce.OptionValueVariant,
+      Nova.OptionValueVariant,
       on_delete: :delete_all
     has_many :option_values, through: [:option_value_variants, :option_values]
-    has_many :line_items, Gcommerce.LineItem # on_delete?
+    has_many :line_items, Nova.LineItem # on_delete?
 
     field :sku, :string
     field :price, :decimal

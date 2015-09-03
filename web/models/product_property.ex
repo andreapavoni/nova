@@ -1,9 +1,9 @@
-defmodule Gcommerce.ProductProperty do
-  use Gcommerce.Web, :model
+defmodule Nova.ProductProperty do
+  use Nova.Web, :model
 
-  schema "gcommerce_product_properties" do
-    belongs_to :product, Gcommerce.Product
-    belongs_to :property, Gcommerce.Property
+  schema "nova_product_properties" do
+    belongs_to :product, Nova.Product
+    belongs_to :property, Nova.Property
 
     field :value, :string
   end

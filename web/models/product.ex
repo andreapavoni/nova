@@ -1,15 +1,15 @@
-defmodule Gcommerce.Product do
-  use Gcommerce.Web, :model
+defmodule Nova.Product do
+  use Nova.Web, :model
 
-  schema "gcommerce_products" do
-    has_many :variants, Gcommerce.Variant, on_delete: :fetch_and_delete
+  schema "nova_products" do
+    has_many :variants, Nova.Variant, on_delete: :fetch_and_delete
     has_many :option_type_products,
-      Gcommerce.OptionTypeProduct,
+      Nova.OptionTypeProduct,
       on_delete: :delete_all
     has_many :option_types, through: [:option_type_products, :option_types]
 
     has_many :product_properties,
-      Gcommerce.ProductProperty,
+      Nova.ProductProperty,
       on_delete: :delete_all
     has_many :properties, through: [:product_properties, :properties]
 

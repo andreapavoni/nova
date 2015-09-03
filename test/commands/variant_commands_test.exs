@@ -1,7 +1,7 @@
-defmodule Gcommerce.Commands.VariantCommandsTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Commands.VariantCommands
-  alias Gcommerce.Variant
+defmodule Nova.Commands.VariantCommandsTest do
+  use Nova.ModelCase
+  alias Nova.Commands.VariantCommands
+  alias Nova.Variant
 
   setup do
     {:ok, product} = Fixtures.product([]) |> Repo.insert

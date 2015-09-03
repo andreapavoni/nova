@@ -1,10 +1,10 @@
-defmodule Gcommerce.LineItem do
-  use Gcommerce.Web, :model
+defmodule Nova.LineItem do
+  use Nova.Web, :model
 
-  schema "gcommerce_line_items" do
+  schema "nova_line_items" do
     field :quantity, :integer
-    belongs_to :order, Gcommerce.Order
-    belongs_to :variant, Gcommerce.Variant
+    belongs_to :order, Nova.Order
+    belongs_to :variant, Nova.Variant
 
     timestamps
   end

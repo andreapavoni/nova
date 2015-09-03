@@ -1,7 +1,7 @@
-defmodule Gcommerce.Fixtures.OptionValues do
-  alias Gcommerce.OptionValue
-  alias Gcommerce.Fixtures.OptionTypes
-  alias Gcommerce.Repo
+defmodule Nova.Fixtures.OptionValues do
+  alias Nova.OptionValue
+  alias Nova.Fixtures.OptionTypes
+  alias Nova.Repo
 
   def option_value(attrs) do
     option_type_id = case attrs[:option_type_id] do
