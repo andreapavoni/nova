@@ -1,5 +1,5 @@
-defmodule Gcommerce.Fixtures.Products do
-  alias Gcommerce.Product
+defmodule Nova.Fixtures.Products do
+  alias Nova.Product
 
   def product(attrs) do
     params = %{

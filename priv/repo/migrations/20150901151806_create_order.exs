@@ -1,8 +1,8 @@
-defmodule Gcommerce.Repo.Migrations.CreateOrder do
+defmodule Nova.Repo.Migrations.CreateOrder do
   use Ecto.Migration
 
   def change do
-    create table(:gcommerce_orders) do
+    create table(:nova_orders) do
       add :total, :decimal
 
       timestamps

@@ -1,6 +1,6 @@
-defmodule Gcommerce.Commands.PropertyCommands do
-  alias Gcommerce.Property
-  alias Gcommerce.Repo
+defmodule Nova.Commands.PropertyCommands do
+  alias Nova.Property
+  alias Nova.Repo
 
   def create_property(params \\ %{}) do
     Property.changeset(%Property{}, params)

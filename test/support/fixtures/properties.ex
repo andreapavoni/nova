@@ -1,6 +1,6 @@
-defmodule Gcommerce.Fixtures.Properties do
-  alias Gcommerce.Repo
-  alias Gcommerce.Property
+defmodule Nova.Fixtures.Properties do
+  alias Nova.Repo
+  alias Nova.Property
 
   def property(attrs) do
     params = %{

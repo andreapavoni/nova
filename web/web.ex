@@ -1,12 +1,12 @@
-defmodule Gcommerce.Web do
+defmodule Nova.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Gcommerce.Web, :controller
-      use Gcommerce.Web, :view
+      use Nova.Web, :controller
+      use Nova.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -26,11 +26,11 @@ defmodule Gcommerce.Web do
     quote do
       use Phoenix.Controller
 
-      alias Gcommerce.Repo
+      alias Nova.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
-      import Gcommerce.Router.Helpers
+      import Nova.Router.Helpers
     end
   end
 
@@ -44,7 +44,7 @@ defmodule Gcommerce.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Gcommerce.Router.Helpers
+      import Nova.Router.Helpers
     end
   end
 
@@ -58,7 +58,7 @@ defmodule Gcommerce.Web do
     quote do
       use Phoenix.Channel
 
-      alias Gcommerce.Repo
+      alias Nova.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 

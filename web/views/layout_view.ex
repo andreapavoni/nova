@@ -1,3 +1,3 @@
-defmodule Gcommerce.LayoutView do
-  use Gcommerce.Web, :view
+defmodule Nova.LayoutView do
+  use Nova.Web, :view
 end

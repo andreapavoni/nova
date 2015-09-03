@@ -1,4 +1,4 @@
-defmodule Gcommerce.ModelCase do
+defmodule Nova.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -16,17 +16,17 @@ defmodule Gcommerce.ModelCase do
 
   using do
     quote do
-      alias Gcommerce.Repo
+      alias Nova.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
-      import Gcommerce.ModelCase
-      alias Gcommerce.Fixtures
+      import Nova.ModelCase
+      alias Nova.Fixtures
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Gcommerce.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Nova.Repo, [])
     end
 
     :ok

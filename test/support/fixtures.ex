@@ -1,10 +1,10 @@
-defmodule Gcommerce.Fixtures do
-  alias Gcommerce.Fixtures.OptionValues
-  alias Gcommerce.Fixtures.OptionTypes
-  alias Gcommerce.Fixtures.Products
-  alias Gcommerce.Fixtures.Variants
-  alias Gcommerce.Fixtures.Properties
-  alias Gcommerce.Fixtures.Orders
+defmodule Nova.Fixtures do
+  alias Nova.Fixtures.OptionValues
+  alias Nova.Fixtures.OptionTypes
+  alias Nova.Fixtures.Products
+  alias Nova.Fixtures.Variants
+  alias Nova.Fixtures.Properties
+  alias Nova.Fixtures.Orders
 
   def property(attrs), do: Properties.property attrs
   def product(attrs), do: Products.product attrs

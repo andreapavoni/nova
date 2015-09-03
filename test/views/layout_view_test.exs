@@ -1,3 +1,3 @@
-defmodule Gcommerce.LayoutViewTest do
-  use Gcommerce.ConnCase, async: true
+defmodule Nova.LayoutViewTest do
+  use Nova.ConnCase, async: true
 end

@@ -1,3 +1,3 @@
-defmodule Gcommerce.PageView do
-  use Gcommerce.Web, :view
+defmodule Nova.PageView do
+  use Nova.Web, :view
 end

@@ -1,6 +1,6 @@
-defmodule Gcommerce.Queries.PropertyQueries do
-  alias Gcommerce.Property
-  alias Gcommerce.Repo
+defmodule Nova.Queries.PropertyQueries do
+  alias Nova.Property
+  alias Nova.Repo
 
   def get_property_by_id(id) do
     Repo.get!(Property, id)

@@ -1,3 +1,3 @@
-defmodule Gcommerce.PageViewTest do
-  use Gcommerce.ConnCase, async: true
+defmodule Nova.PageViewTest do
+  use Nova.ConnCase, async: true
 end

@@ -1,6 +1,6 @@
-defmodule Gcommerce.OptionTypeTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.OptionType
+defmodule Nova.OptionTypeTest do
+  use Nova.ModelCase
+  alias Nova.OptionType
 
   @valid_attrs %{display_name: "some content", name: "some content"}
   @long_str String.duplicate("a", 201)

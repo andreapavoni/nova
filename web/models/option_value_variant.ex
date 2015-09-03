@@ -1,9 +1,9 @@
-defmodule Gcommerce.OptionValueVariant do
-  use Gcommerce.Web, :model
+defmodule Nova.OptionValueVariant do
+  use Nova.Web, :model
 
-  schema "gcommerce_option_value_variants" do
-    belongs_to :variant, Gcommerce.Variant
-    belongs_to :option_value, Gcommerce.OptionValue
+  schema "nova_option_value_variants" do
+    belongs_to :variant, Nova.Variant
+    belongs_to :option_value, Nova.OptionValue
   end
 
   @required_fields ~w(variant_id option_value_id)

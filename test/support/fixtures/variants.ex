@@ -1,7 +1,7 @@
-defmodule Gcommerce.Fixtures.Variants do
-  alias Gcommerce.Repo
-  alias Gcommerce.Variant
-  alias Gcommerce.Fixtures.Products
+defmodule Nova.Fixtures.Variants do
+  alias Nova.Repo
+  alias Nova.Variant
+  alias Nova.Fixtures.Products
 
   def variant(attrs) do
     product_id = case attrs[:product_id] do

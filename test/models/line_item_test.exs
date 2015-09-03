@@ -1,6 +1,6 @@
-defmodule Gcommerce.LineItemTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.LineItem
+defmodule Nova.LineItemTest do
+  use Nova.ModelCase
+  alias Nova.LineItem
 
   @valid_attrs %{quantity: 2, order_id: 1, variant_id: 1}
   @invalid_attrs %{quantity: 0}

@@ -1,9 +1,9 @@
-defmodule Gcommerce.OptionTypeProduct do
-  use Gcommerce.Web, :model
+defmodule Nova.OptionTypeProduct do
+  use Nova.Web, :model
 
-  schema "gcommerce_option_type_products" do
-    belongs_to :product, Gcommerce.Product
-    belongs_to :option_type, Gcommerce.OptionType
+  schema "nova_option_type_products" do
+    belongs_to :product, Nova.Product
+    belongs_to :option_type, Nova.OptionType
   end
 
   @required_fields ~w(option_type_id product_id)

@@ -1,5 +1,5 @@
-defmodule Gcommerce.ErrorView do
-  use Gcommerce.Web, :view
+defmodule Nova.ErrorView do
+  use Nova.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

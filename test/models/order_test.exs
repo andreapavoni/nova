@@ -1,7 +1,7 @@
-defmodule Gcommerce.OrderTest do
-  use Gcommerce.ModelCase
+defmodule Nova.OrderTest do
+  use Nova.ModelCase
 
-  alias Gcommerce.Order
+  alias Nova.Order
 
   @valid_attrs %{total: "120.5"}
   @invalid_attrs %{}

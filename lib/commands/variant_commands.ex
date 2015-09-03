@@ -1,6 +1,6 @@
-defmodule Gcommerce.Commands.VariantCommands do
-  alias Gcommerce.Variant
-  alias Gcommerce.Repo
+defmodule Nova.Commands.VariantCommands do
+  alias Nova.Variant
+  alias Nova.Repo
 
   def create_variant(params \\ %{}) do
     Variant.changeset(%Variant{}, params)

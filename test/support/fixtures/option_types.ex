@@ -1,5 +1,5 @@
-defmodule Gcommerce.Fixtures.OptionTypes do
-  alias Gcommerce.OptionType
+defmodule Nova.Fixtures.OptionTypes do
+  alias Nova.OptionType
 
   def option_type(attrs) do
     params = %{

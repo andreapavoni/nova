@@ -1,7 +1,7 @@
-defmodule Gcommerce.Commands.ProductCommandsTest do
-  use Gcommerce.ModelCase
-  alias Gcommerce.Commands.ProductCommands
-  alias Gcommerce.Product
+defmodule Nova.Commands.ProductCommandsTest do
+  use Nova.ModelCase
+  alias Nova.Commands.ProductCommands
+  alias Nova.Product
 
   @product_params Fixtures.product([]).changes
 
