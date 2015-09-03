@@ -1,6 +1,6 @@
 # Nova
 
-An attempt to port/rebuild [Spree](http://spreecommerce.com) with [Phoenix](http://www.phoenixframework.org/).
+An attempt to port/rebuild [Spree](http://spreecommerce.com), an open source e-commerce solution, with [Phoenix](http://www.phoenixframework.org/).
 
 
 ## Vision
