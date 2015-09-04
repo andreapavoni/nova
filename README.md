@@ -46,7 +46,7 @@ Don't know right now, _world domination™_? :-)
 ## Setup
 
   1. Install dependencies with `mix deps.get`
-  2. Update `config/dev.exs` and `config/test.exs` to use a valid local Postgres username and password
+  2. Copy `.env-example.exs` to `.env.exs`, then edit it to set secret configs
   3. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   4. Run tests with `mix test`
   5. Start Phoenix endpoint with `mix phoenix.server`

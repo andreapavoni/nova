@@ -1,5 +1,8 @@
 use Mix.Config
 
+# Setting ENVs
+Code.eval_file ".env.exs"
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -12,6 +15,7 @@ config :nova, Nova.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
+  secret_key_base: System.get_env("NOVA_SECRET_KEY_BASE"),
   watchers: [{Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}]
 
 # Watch static and templates for browser reloading.
@@ -35,7 +39,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :nova, Nova.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "andrea",
-  password: "",
+  username: System.get_env("NOVA_DB_USER"),
+  password: System.get_env("NOVA_DB_PASSWORD"),
   database: "nova_dev",
   pool_size: 10
