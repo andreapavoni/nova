@@ -11,20 +11,20 @@ defmodule Nova.Commands.VariantCommandsTest do
     {:ok, product: product, variant: variant}
   end
 
-  test "create_variant/1" do
+  test "create/1" do
     params = Fixtures.variant([]).changes
-    assert {:ok, %Variant{}} = VariantCommands.create_variant(params)
+    assert {:ok, %Variant{}} = VariantCommands.create(params)
   end
 
-  test "update_variant/2", context do
-    {:ok, variant} = VariantCommands.update_variant(context[:variant].id, %{sku: "ABC"})
+  test "update/2", context do
+    {:ok, variant} = VariantCommands.update(context[:variant].id, %{sku: "ABC"})
 
     assert %Variant{} = variant
     assert variant.sku == "ABC"
   end
 
-  test "delete_variant/1", context do
-    assert %Variant{} = VariantCommands.delete_variant(context[:variant].id)
+  test "delete/1", context do
+    assert %Variant{} = VariantCommands.delete(context[:variant].id)
 
     refute Repo.get(Variant, context[:variant].id)
   end

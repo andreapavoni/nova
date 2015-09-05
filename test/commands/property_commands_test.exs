@@ -5,24 +5,24 @@ defmodule Nova.Commands.PropertyCommandsTest do
 
   @property_params Fixtures.property([]).changes
 
-  test "create_property/1" do
-    assert {:ok, %Property{}} = PropertyCommands.create_property(@property_params)
+  test "create/1" do
+    assert {:ok, %Property{}} = PropertyCommands.create(@property_params)
   end
 
-  test "update_property/2" do
+  test "update/2" do
     {:ok, property} = Fixtures.property([]) |> Repo.insert
     params = %{@property_params | name: "New name"}
 
-    {:ok, property} = PropertyCommands.update_property(property.id, params)
+    {:ok, property} = PropertyCommands.update(property.id, params)
 
     assert %Property{} = property
     assert property.name == "New name"
   end
 
-  test "delete_property/1" do
+  test "delete/1" do
     {:ok, property} = Fixtures.property([]) |> Repo.insert
 
-    assert %Property{} = PropertyCommands.delete_property(property.id)
+    assert %Property{} = PropertyCommands.delete(property.id)
 
     refute Repo.get(Property, property.id)
   end
