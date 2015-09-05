@@ -2,6 +2,7 @@ defmodule Nova.Commands.VariantCommandsTest do
   use Nova.ModelCase
   alias Nova.Commands.VariantCommands
   alias Nova.Variant
+  alias Nova.OptionValueVariant
 
   setup do
     {:ok, product} = Fixtures.product([]) |> Repo.insert
@@ -26,5 +27,13 @@ defmodule Nova.Commands.VariantCommandsTest do
     assert %Variant{} = VariantCommands.delete_variant(context[:variant].id)
 
     refute Repo.get(Variant, context[:variant].id)
+  end
+
+  test "add_option_value/2" do
+    {:ok, variant} = Fixtures.variant([]) |> Repo.insert
+    {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
+
+    {:ok, result} = VariantCommands.add_option_value(variant.id, option_value)
+    assert %OptionValueVariant{} = result
   end
 end

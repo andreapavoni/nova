@@ -1,10 +1,10 @@
 defmodule Nova.Commands.VariantCommands do
   alias Nova.Variant
+  alias Nova.OptionValueVariant
   alias Nova.Repo
 
   def create_variant(params \\ %{}) do
-    Variant.changeset(%Variant{}, params)
-    |> Repo.insert
+    Variant.changeset(%Variant{}, params) |> Repo.insert
   end
 
   def update_variant(id, params) do
@@ -14,8 +14,14 @@ defmodule Nova.Commands.VariantCommands do
   end
 
   def delete_variant(id) do
-    Repo.get!(Variant, id)
-    |> Repo.delete!
+    Repo.get!(Variant, id) |> Repo.delete!
+  end
+
+  def add_option_value(id, option_value) do
+    OptionValueVariant.changeset(
+      %OptionValueVariant{},
+      %{option_value_id: option_value.id,variant_id: id})
+    |> Repo.insert
   end
 
 end
