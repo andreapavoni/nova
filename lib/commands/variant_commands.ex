@@ -17,11 +17,13 @@ defmodule Nova.Commands.VariantCommands do
     Repo.get!(Variant, id) |> Repo.delete!
   end
 
-  def add_option_value(id, option_value) do
-    OptionValueVariant.changeset(
+  def add_option_values(id, option_values) do
+    for option_value <- option_values do
+      OptionValueVariant.changeset(
       %OptionValueVariant{},
-      %{option_value_id: option_value.id,variant_id: id})
-    |> Repo.insert
+      %{option_value_id: option_value.id, variant_id: id})
+      |> Repo.insert
+    end
   end
 
 end

@@ -29,11 +29,12 @@ defmodule Nova.Commands.VariantCommandsTest do
     refute Repo.get(Variant, context[:variant].id)
   end
 
-  test "add_option_value/2" do
+  test "add_option_values/2" do
     {:ok, variant} = Fixtures.variant([]) |> Repo.insert
-    {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
+    {:ok, optval} = Fixtures.option_value([]) |> Repo.insert
+    {:ok, optval2} = Fixtures.option_value([]) |> Repo.insert
 
-    {:ok, result} = VariantCommands.add_option_value(variant.id, option_value)
-    assert %OptionValueVariant{} = result
+    result = VariantCommands.add_option_values(variant.id, [optval, optval2])
+    assert [ok: _, ok: _] = result
   end
 end

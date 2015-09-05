@@ -3,7 +3,7 @@ defmodule Nova.Fixtures.OptionTypes do
 
   def option_type(attrs) do
     params = %{
-      name: "Some option type",
+      name: Faker.Commerce.product_name_adjective,
       display_name: "option type",
     } |> Map.merge(Enum.into(attrs, %{}))
 
