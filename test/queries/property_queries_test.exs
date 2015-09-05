@@ -9,10 +9,10 @@ defmodule Nova.Queries.PropertyQueriesTest do
     assert %Property{} = PropertyQueries.get_property_by_id(property.id)
   end
 
-  test "get_all_propertys/1 when property exists" do
+  test "get_all_properties/1 when property exists" do
     {:ok, _} = Fixtures.property([]) |> Repo.insert
 
-    assert [%Property{}] = PropertyQueries.get_all_propertys
+    assert [%Property{}] = PropertyQueries.get_all_properties
   end
 
 end

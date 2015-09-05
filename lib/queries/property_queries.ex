@@ -6,7 +6,7 @@ defmodule Nova.Queries.PropertyQueries do
     Repo.get!(Property, id)
   end
 
-  def get_all_propertys do
+  def get_all_properties do
     Repo.all(Property)
   end
 end
