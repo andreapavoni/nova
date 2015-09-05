@@ -4,13 +4,11 @@ defmodule Nova.Fixtures.Variants do
   alias Nova.Fixtures.Products
 
   def variant(attrs) do
-    product_id = case attrs[:product_id] do
-      nil ->
-        {:ok, product} = Products.product([]) |> Repo.insert
-        product.id
-      _   ->
-        attrs[:product_id]
-    end
+    product_id = attrs[:product_id] || (
+      Products.product([])
+      |> Repo.insert
+      |> elem(1)
+    ).id
 
     params = %{
       price: Faker.Commerce.price,

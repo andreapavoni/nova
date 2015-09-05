@@ -4,13 +4,11 @@ defmodule Nova.Fixtures.OptionValues do
   alias Nova.Repo
 
   def option_value(attrs) do
-    option_type_id = case attrs[:option_type_id] do
-      nil ->
-        {:ok, option_type} = OptionTypes.option_type([]) |> Repo.insert
-        option_type.id
-      _   ->
-        attrs[:option_type_id]
-    end
+    option_type_id = attrs[:option_type_id] || (
+      OptionTypes.option_type([])
+      |> Repo.insert
+      |> elem(1)
+    ).id
 
     params = %{
       name: "Some option value",
