@@ -3,16 +3,16 @@ defmodule Nova.Queries.VariantQueriesTest do
   alias Nova.Queries.VariantQueries
   alias Nova.Variant
 
-  test "get_variant_by_id/1 when variant exists" do
+  test "find_by_id/1 when variant exists" do
     {:ok, variant} = Fixtures.variant([]) |> Repo.insert
 
-    assert %Variant{} = VariantQueries.get_variant_by_id(variant.id)
+    assert %Variant{} = VariantQueries.find_by_id(variant.id)
   end
 
-  test "get_all_variants/1 when variant exists" do
+  test "all/1 when variant exists" do
     {:ok, _} = Fixtures.variant([]) |> Repo.insert
 
-    assert [%Variant{}] = VariantQueries.get_all_variants
+    assert [%Variant{}] = VariantQueries.all
   end
 
 end

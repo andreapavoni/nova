@@ -2,11 +2,11 @@ defmodule Nova.Queries.PropertyQueries do
   alias Nova.Property
   alias Nova.Repo
 
-  def get_property_by_id(id) do
+  def find_by_id(id) do
     Repo.get!(Property, id)
   end
 
-  def get_all_properties do
+  def all do
     Repo.all(Property)
   end
 end
