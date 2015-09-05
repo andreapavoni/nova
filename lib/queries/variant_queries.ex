@@ -1,6 +1,7 @@
 defmodule Nova.Queries.VariantQueries do
   alias Nova.Variant
   alias Nova.Repo
+  import Ecto.Query, only: [from: 2]
 
   def find_by_id(id) do
     Repo.get!(Variant, id)
@@ -10,4 +11,9 @@ defmodule Nova.Queries.VariantQueries do
     Repo.all(Variant)
   end
 
+  def with_option_value(query, option_value) do
+    from variant in query,
+    left_join: optvalue_variant in assoc(variant, :option_value_variants),
+    join: option_value in assoc(optvalue_variant, :option_value)
+  end
 end
