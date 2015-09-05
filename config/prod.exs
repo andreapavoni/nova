@@ -19,14 +19,14 @@ config :nova, Nova.Repo,
   # username: System.get_env("NOVA_DB_USER"),
   # password: System.get_env("NOVA_DB_PASSWORD"),
   # database: "nova_prod",
-  url: {:system, "DATABASE_URL"}, # For Heroku deploys
+  url: System.get_env("DATABASE_URL"), # For Heroku deploys
   pool_size: 20
 
 config :nova, Nova.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
-  secret_key_base: {:system, "NOVA_SECRET_KEY_BASE"}
+  cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("NOVA_SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 config :logger, level: :info
