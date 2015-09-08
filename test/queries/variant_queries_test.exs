@@ -4,32 +4,39 @@ defmodule Nova.Queries.VariantQueriesTest do
   alias Nova.Variant
   alias Nova.OptionValueVariant
 
-  test "find_by_id/1 when variant exists" do
-    {:ok, variant} = Fixtures.variant([]) |> Repo.insert
+  describe "find_by_id/1" do
+    context "when variant exists" do
+      it "returns the variant" do
+        {:ok, variant} = Fixtures.variant([]) |> Repo.insert
 
-    assert %Variant{} = VariantQueries.find_by_id(variant.id)
+        assert %Variant{} = VariantQueries.find_by_id(variant.id)
+      end
+    end
   end
 
-  test "all/1 when variant exists" do
-    {:ok, _} = Fixtures.variant([]) |> Repo.insert
+  describe "all/1" do
+    it "returns a list of variants" do
+      {:ok, _} = Fixtures.variant([]) |> Repo.insert
 
-    assert [%Variant{}] = VariantQueries.all
+      assert [%Variant{}] = VariantQueries.all
+    end
   end
 
-  test "with_option_value/2" do
-    {:ok, variant} = Fixtures.variant([]) |> Repo.insert
-    {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
+  describe "with_option_value/2" do
+    it "returns a list of variants with given option_value" do
+      {:ok, variant} = Fixtures.variant([]) |> Repo.insert
+      {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
 
-    OptionValueVariant.changeset(
-      %OptionValueVariant{},
-      %{option_value_id: option_value.id, variant_id: variant.id})
-    |> Repo.insert
+      OptionValueVariant.changeset(
+        %OptionValueVariant{},
+        %{option_value_id: option_value.id, variant_id: variant.id})
+      |> Repo.insert
 
-    results = Variant
-              |> VariantQueries.with_option_value(option_value)
-              |> Repo.all
+      results = Variant
+                |> VariantQueries.with_option_value(option_value)
+                |> Repo.all
 
-    assert results == [variant]
+      assert results == [variant]
+    end
   end
-
 end

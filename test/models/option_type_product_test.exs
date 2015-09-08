@@ -11,32 +11,38 @@ defmodule Nova.OptionTypeProductTest do
     {:ok, attrs: %{option_type_id: option_type.id, product_id: product.id}}
   end
 
-  test "changeset with valid attributes" do
-    assert OptionTypeProduct.changeset(%OptionTypeProduct{}, @attrs).valid?
-  end
+  describe "changeset" do
+    context "with valid attributes" do
+      it "is valid" do
+        assert OptionTypeProduct.changeset(%OptionTypeProduct{}, @attrs).valid?
+      end
+    end
 
-  test "changeset with invalid attributes" do
-    refute OptionTypeProduct.changeset(%OptionTypeProduct{}, %{}).valid?
-  end
+    context "with invalid attributes" do
+      it "is not valid" do
+        refute OptionTypeProduct.changeset(%OptionTypeProduct{}, %{}).valid?
+      end
 
-  test "changeset with non existent product", context do
-    attrs = %{context[:attrs] | product_id: -1}
-    {:error, changeset} = %OptionTypeProduct{}
-                            |> OptionTypeProduct.changeset(attrs)
-                            |> Repo.insert
+      it "does not save with non existent product", context do
+        attrs = %{context[:attrs] | product_id: -1}
+        {:error, changeset} = %OptionTypeProduct{}
+                                |> OptionTypeProduct.changeset(attrs)
+                                |> Repo.insert
 
-    refute changeset.valid?
-    assert {:product_id, "does not exist"} in changeset.errors
-  end
+        refute changeset.valid?
+        assert {:product_id, "does not exist"} in changeset.errors
+      end
 
-  test "changeset with non existent option_type", context do
-    attrs = %{context[:attrs] | option_type_id: -1}
+      it "does not save with non existent option_type", context do
+        attrs = %{context[:attrs] | option_type_id: -1}
 
-    {:error, changeset} = %OptionTypeProduct{}
-                            |> OptionTypeProduct.changeset(attrs)
-                            |> Repo.insert
+        {:error, changeset} = %OptionTypeProduct{}
+                                |> OptionTypeProduct.changeset(attrs)
+                                |> Repo.insert
 
-    refute changeset.valid?
-    assert {:option_type_id, "does not exist"} in changeset.errors
+        refute changeset.valid?
+        assert {:option_type_id, "does not exist"} in changeset.errors
+      end
+    end
   end
 end

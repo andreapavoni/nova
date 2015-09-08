@@ -6,13 +6,17 @@ defmodule Nova.OrderTest do
   @valid_attrs %{total: "120.5"}
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
-    changeset = Order.changeset(%Order{}, @valid_attrs)
-    assert changeset.valid?
-  end
+  describe "changeset" do
+    context "with valid attributes" do
+      it "is valid" do
+        assert Order.changeset(%Order{}, @valid_attrs).valid?
+      end
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = Order.changeset(%Order{}, @invalid_attrs)
-    refute changeset.valid?
+    context "with invalid attributes" do
+      it "is not valid" do
+        refute Order.changeset(%Order{}, @invalid_attrs).valid?
+      end
+    end
   end
 end

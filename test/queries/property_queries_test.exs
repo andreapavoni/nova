@@ -3,16 +3,22 @@ defmodule Nova.Queries.PropertyQueriesTest do
   alias Nova.Queries.PropertyQueries
   alias Nova.Property
 
-  test "find_by_id/1 when property exists" do
-    {:ok, property} = Fixtures.property([]) |> Repo.insert
+  describe "find_by_id/1" do
+    context "when property exists" do
+      it "returns the property" do
+        {:ok, property} = Fixtures.property([]) |> Repo.insert
 
-    assert %Property{} = PropertyQueries.find_by_id(property.id)
+        assert %Property{} = PropertyQueries.find_by_id(property.id)
+      end
+    end
   end
 
-  test "all/1 when property exists" do
-    {:ok, _} = Fixtures.property([]) |> Repo.insert
+  describe "all/1" do
+    it "returns a list of properties" do
+      {:ok, _} = Fixtures.property([]) |> Repo.insert
 
-    assert [%Property{}] = PropertyQueries.all
+      assert [%Property{}] = PropertyQueries.all
+    end
   end
 
 end

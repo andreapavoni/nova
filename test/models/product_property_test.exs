@@ -14,38 +14,44 @@ defmodule Nova.ProductPropertyTest do
     {:ok, attrs: attrs}
   end
 
-  test "changeset with valid attributes" do
-    assert ProductProperty.changeset(%ProductProperty{}, @valid_attrs).valid?
-  end
+  describe "changeset" do
+    context "with valid attributes" do
+      it "is valid" do
+        assert ProductProperty.changeset(%ProductProperty{}, @valid_attrs).valid?
+      end
+    end
 
-  test "changeset with invalid attributes" do
-    refute ProductProperty.changeset(%ProductProperty{}, %{}).valid?
-  end
+    context "with invalid attributes" do
+      it "is not valid" do
+        refute ProductProperty.changeset(%ProductProperty{}, %{}).valid?
+      end
 
-  test "changeset with value length longer than 200" do
-    attrs = Map.merge(@valid_attrs, %{value: @long_str})
-    error = {:value, {"should be at most %{count} characters", [count: 200]}}
+      it "is not valid with value length longer than 200" do
+        attrs = Map.merge(@valid_attrs, %{value: @long_str})
+        error = {:value, {"should be at most %{count} characters", [count: 200]}}
 
-    assert error in errors_on(%ProductProperty{}, attrs)
-  end
+        assert error in errors_on(%ProductProperty{}, attrs)
+      end
 
-  test "changeset with non existent product", context do
-    attrs = %{context[:attrs] | product_id: -1}
-    {:error, changeset} = %ProductProperty{}
-                            |> ProductProperty.changeset(attrs)
-                            |> Repo.insert
+      it "does not save with non existent product", context do
+        attrs = %{context[:attrs] | product_id: -1}
+        {:error, changeset} = %ProductProperty{}
+                                |> ProductProperty.changeset(attrs)
+                                |> Repo.insert
 
-    refute changeset.valid?
-    assert {:product_id, "does not exist"} in changeset.errors
-  end
+        refute changeset.valid?
+        assert {:product_id, "does not exist"} in changeset.errors
+      end
 
-  test "changeset with non existent property", context do
-    attrs = %{context[:attrs] | property_id: -1}
-    {:error, changeset} = %ProductProperty{}
-                            |> ProductProperty.changeset(attrs)
-                            |> Repo.insert
+      it "does not save with non existent property", context do
+        attrs = %{context[:attrs] | property_id: -1}
+        {:error, changeset} = %ProductProperty{}
+                                |> ProductProperty.changeset(attrs)
+                                |> Repo.insert
 
-    refute changeset.valid?
-    assert {:property_id, "does not exist"} in changeset.errors
+        refute changeset.valid?
+        assert {:property_id, "does not exist"} in changeset.errors
+      end
+    end
   end
 end

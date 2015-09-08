@@ -3,16 +3,21 @@ defmodule Nova.Queries.ProductQueriesTest do
   alias Nova.Queries.ProductQueries
   alias Nova.Product
 
-  test "find_by_id/1 when product exists" do
-    {:ok, product} = Fixtures.product([]) |> Repo.insert
+  describe "find_by_id/1" do
+    context "when product exists" do
+      it "returns the product" do
+        {:ok, product} = Fixtures.product([]) |> Repo.insert
 
-    assert %Product{} = ProductQueries.find_by_id(product.id)
+        assert %Product{} = ProductQueries.find_by_id(product.id)
+      end
+    end
   end
 
-  test "all/1 when product exists" do
-    {:ok, _} = Fixtures.product([]) |> Repo.insert
+  describe "all/1" do
+    it "returns a list of products" do
+      {:ok, _} = Fixtures.product([]) |> Repo.insert
 
-    assert [%Product{}] = ProductQueries.all
+      assert [%Product{}] = ProductQueries.all
+    end
   end
-
 end

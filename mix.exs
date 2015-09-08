@@ -16,9 +16,22 @@ defmodule Nova.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {Nova, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+    [
+      mod: {Nova, []},
+      applications: applications(Mix.env)
+    ]
+  end
+
+  defp applications(:test), do: applications(:all)
+  defp applications(_all) do
+    [
+      :phoenix,
+      :phoenix_html,
+      :cowboy,
+      :logger,
+      :phoenix_ecto,
+      :postgrex
+    ]
   end
 
   # Specifies which paths to compile per environment
@@ -36,6 +49,7 @@ defmodule Nova.Mixfile do
       {:phoenix_html, "~> 2.1"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:cowboy, "~> 1.0"},
+      {:ex_spec, "~> 0.3.0", only: :test},
       {:faker, "~> 0.5", only: :test}
     ]
   end

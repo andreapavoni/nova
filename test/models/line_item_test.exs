@@ -13,37 +13,42 @@ defmodule Nova.LineItemTest do
     {:ok, attrs: attrs}
   end
 
-  test "changeset with valid attributes" do
-    assert LineItem.changeset(%LineItem{}, @valid_attrs).valid?
-  end
+  describe "changeset" do
+    context "with valid attributes" do
+      it "is valid" do
+        assert LineItem.changeset(%LineItem{}, @valid_attrs).valid?
+      end
+    end
 
-  test "changeset with invalid attributes" do
-    changeset = LineItem.changeset(%LineItem{}, @invalid_attrs)
+    context "with invalid attributes" do
+      it "sets errors on invalid attributes" do
+        changeset = LineItem.changeset(%LineItem{}, @invalid_attrs)
 
-    refute changeset.valid?
-    assert {:order_id, "can't be blank"} in changeset.errors
-    assert {:variant_id, "can't be blank"} in changeset.errors
-    assert {:quantity, {"must be greater than %{count}", [count: 0]}} in changeset.errors
-  end
+        refute changeset.valid?
+        assert {:order_id, "can't be blank"} in changeset.errors
+        assert {:variant_id, "can't be blank"} in changeset.errors
+        assert {:quantity, {"must be greater than %{count}", [count: 0]}} in changeset.errors
+      end
 
+      it "does not save with non existent order", context do
+        attrs = %{context[:attrs] | order_id: -1}
+        {:error, changeset} = %LineItem{}
+        |> LineItem.changeset(attrs)
+        |> Repo.insert
 
-  test "changeset with non existent order", context do
-    attrs = %{context[:attrs] | order_id: -1}
-    {:error, changeset} = %LineItem{}
-                            |> LineItem.changeset(attrs)
-                            |> Repo.insert
+        refute changeset.valid?
+        assert {:order_id, "does not exist"} in changeset.errors
+      end
 
-    refute changeset.valid?
-    assert {:order_id, "does not exist"} in changeset.errors
-  end
+      it "does not save with non existent variant", context do
+        attrs = %{context[:attrs] | variant_id: -1}
+        {:error, changeset} = %LineItem{}
+        |> LineItem.changeset(attrs)
+        |> Repo.insert
 
-  test "changeset with non existent variant", context do
-    attrs = %{context[:attrs] | variant_id: -1}
-    {:error, changeset} = %LineItem{}
-                            |> LineItem.changeset(attrs)
-                            |> Repo.insert
-
-    refute changeset.valid?
-    assert {:variant_id, "does not exist"} in changeset.errors
+        refute changeset.valid?
+        assert {:variant_id, "does not exist"} in changeset.errors
+      end
+    end
   end
 end

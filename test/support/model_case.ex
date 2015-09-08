@@ -21,6 +21,7 @@ defmodule Nova.ModelCase do
       import Ecto.Query, only: [from: 2]
       import Nova.ModelCase
       alias Nova.Fixtures
+      use ExSpec
     end
   end
 

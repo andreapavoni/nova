@@ -10,35 +10,41 @@ defmodule Nova.ProductTest do
     sku: "ABC"
   }
 
-  test "changeset with valid attributes" do
-    assert Product.changeset(%Product{}, @valid_attrs).valid?
-  end
+  describe "changeset" do
+    context "with valid attributes" do
+      it "is valid" do
+        assert Product.changeset(%Product{}, @valid_attrs).valid?
+      end
+    end
 
-  test "changeset with invalid attributes" do
-    refute Product.changeset(%Product{}, %{}).valid?
-  end
+    context "with invalid attributes" do
+      it "is not valid" do
+        refute Product.changeset(%Product{}, %{}).valid?
+      end
 
-  test "changeset with name length shorter than 3" do
-    attrs = Map.merge(@valid_attrs, %{name: "a"})
-    error = {:name, {"should be at least %{count} characters", [count: 3]}}
+      it "is not valid with name length shorter than 3" do
+        attrs = Map.merge(@valid_attrs, %{name: "a"})
+        error = {:name, {"should be at least %{count} characters", [count: 3]}}
 
-    assert error in errors_on(%Product{}, attrs)
-  end
+        assert error in errors_on(%Product{}, attrs)
+      end
 
-  test "changeset with name length longer than 200" do
-    attrs = Map.merge(@valid_attrs, %{name: String.duplicate("a", 201)})
-    error = {:name, {"should be at most %{count} characters", [count: 200]}}
+      it "is not valid with name length longer than 200" do
+        attrs = Map.merge(@valid_attrs, %{name: String.duplicate("a", 201)})
+        error = {:name, {"should be at most %{count} characters", [count: 200]}}
 
-    assert error in errors_on(%Product{}, attrs)
-  end
+        assert error in errors_on(%Product{}, attrs)
+      end
 
-  test "changeset with sku not unique" do
-    product = Fixtures.product(sku: "ABC")
-    product |> Repo.insert
+      it "does not save with sku not unique" do
+        product = Fixtures.product(sku: "ABC")
+        product |> Repo.insert
 
-    {:error, changeset} = product |> Repo.insert
+        {:error, changeset} = product |> Repo.insert
 
-    refute changeset.valid?
-    assert {:sku, "has already been taken"} in changeset.errors
+        refute changeset.valid?
+        assert {:sku, "has already been taken"} in changeset.errors
+      end
+    end
   end
 end
