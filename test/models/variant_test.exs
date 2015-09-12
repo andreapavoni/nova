@@ -30,11 +30,10 @@ defmodule Nova.VariantTest do
       end
 
       it "does not save with sku not unique" do
-        variant = Fixtures.variant(sku: "ABC")
+        %{variants: variants} = fixtures(:variants)
+        attrs = Map.merge(@valid_attrs, %{sku: variants.default.sku})
 
-        variant |> Repo.insert
-
-        {:error, changeset} = variant |> Repo.insert
+        {:error, changeset} = Variant.changeset(%Variant{}, attrs) |> Repo.insert
 
         refute changeset.valid?
         assert {:sku, "has already been taken"} in changeset.errors

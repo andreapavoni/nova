@@ -22,6 +22,7 @@ defmodule Nova.ModelCase do
       import Nova.ModelCase
       alias Nova.Fixtures
       use ExSpec
+      import EctoFixtures, only: [fixtures: 1, fixtures: 2]
     end
   end
 

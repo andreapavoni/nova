@@ -6,9 +6,13 @@ defmodule Nova.LineItemTest do
   @invalid_attrs %{quantity: 0}
 
   setup do
-    {:ok, order} = Fixtures.order([]) |> Repo.insert
-    {:ok, variant} = Fixtures.variant([]) |> Repo.insert
-    attrs = %{order_id: order.id, variant_id: variant.id, quantity: 2}
+    %{variants: variants} = fixtures(:variants)
+    %{orders: orders} = fixtures(:orders)
+    attrs = %{
+      order_id: orders.default.id,
+      variant_id: variants.default.id,
+      quantity: 2
+    }
 
     {:ok, attrs: attrs}
   end

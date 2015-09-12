@@ -37,10 +37,10 @@ defmodule Nova.ProductTest do
       end
 
       it "does not save with sku not unique" do
-        product = Fixtures.product(sku: "ABC")
-        product |> Repo.insert
+        %{products: products} = fixtures(:products)
+        attrs = Map.merge(@valid_attrs, %{sku: products.default.sku})
 
-        {:error, changeset} = product |> Repo.insert
+        {:error, changeset} = Product.changeset(%Product{}, attrs) |> Repo.insert
 
         refute changeset.valid?
         assert {:sku, "has already been taken"} in changeset.errors

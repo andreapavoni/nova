@@ -5,10 +5,14 @@ defmodule Nova.OptionValueVariantTest do
   @attrs %{option_value_id: 1, variant_id: 1}
 
   setup do
-    {:ok, variant} = Fixtures.variant(sku: "ABC") |> Repo.insert
-    {:ok, option_value} = Fixtures.option_value([]) |> Repo.insert
+    %{variants: variants} = fixtures(:variants)
+    %{option_values: option_values} = fixtures(:option_values)
+    attrs = %{
+      option_value_id: option_values.default.id,
+      variant_id: variants.default.id
+    }
 
-    {:ok, attrs: %{option_value_id: option_value.id, variant_id: variant.id}}
+    {:ok, attrs: attrs}
   end
 
   describe "changeset" do

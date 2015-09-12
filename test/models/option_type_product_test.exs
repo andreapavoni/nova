@@ -5,10 +5,14 @@ defmodule Nova.OptionTypeProductTest do
   @attrs %{option_type_id: 1, product_id: 1}
 
   setup do
-    {:ok, product} = Fixtures.product(sku: "ABC") |> Repo.insert
-    {:ok, option_type} = Fixtures.option_type([]) |> Repo.insert
+    %{products: products} = fixtures(:products)
+    %{option_types: option_types} = fixtures(:option_types)
+    attrs = %{
+      option_type_id: option_types.default.id,
+      product_id: products.default.id
+    }
 
-    {:ok, attrs: %{option_type_id: option_type.id, product_id: product.id}}
+    {:ok, attrs: attrs}
   end
 
   describe "changeset" do

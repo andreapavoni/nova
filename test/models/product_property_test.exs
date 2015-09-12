@@ -7,9 +7,13 @@ defmodule Nova.ProductPropertyTest do
   @long_str String.duplicate("a", 201)
 
   setup do
-    {:ok, property} = Fixtures.property([]) |> Repo.insert
-    {:ok, product} = Fixtures.product([]) |> Repo.insert
-    attrs = %{property_id: property.id, product_id: product.id, value: "test"}
+    %{products: products} = fixtures(:products)
+    %{properties: properties} = fixtures(:properties)
+    attrs = %{
+      property_id: properties.default.id,
+      product_id: products.default.id,
+      value: "test"
+    }
 
     {:ok, attrs: attrs}
   end
