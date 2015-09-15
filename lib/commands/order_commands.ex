@@ -1,6 +1,6 @@
 defmodule Nova.Commands.OrderCommands do
   @moduledoc """
-  A collection of commands to manupulate orders.
+  Provides functions that manipulate `Nova.Order`.
   """
 
   alias Nova.Order
@@ -10,20 +10,14 @@ defmodule Nova.Commands.OrderCommands do
   alias Decimal, as: D
 
   @doc """
-  Create a new Order
-
-      iex> OrderCommands.create
-      {:ok, %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1, ...}}
+  Creates a new order.
   """
   def create do
     Order.changeset(%Order{}) |> Repo.insert
   end
 
   @doc """
-  Delete an Order
-
-      iex> OrderCommands.delete 1
-      %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1, ...}
+  Deletes an order.
   """
   def delete(id) do
     Repo.get!(Order, id)
@@ -31,11 +25,7 @@ defmodule Nova.Commands.OrderCommands do
   end
 
   @doc """
-  Update an Order
-
-      iex> OrderCommands.update 1, %{total: 123.0}
-      {:ok, %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1,
-      total: #Decimal<123.0>, ...}}
+  Updates an order.
   """
   def update(id, params) do
     Repo.get!(Order, id)
@@ -44,11 +34,7 @@ defmodule Nova.Commands.OrderCommands do
   end
 
   @doc """
-  Add a LineItem to an Order and update its total
-
-      iex> OrderCommands.add_line_item 1, variant, 1
-      {:ok, %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1,
-      total: #Decimal<10.0>, ...}}
+  Adds a line item to an order
   """
   def add_line_item(id, variant, quantity) do
     order = Repo.get!(Order, id)
@@ -66,11 +52,7 @@ defmodule Nova.Commands.OrderCommands do
   end
 
   @doc """
-  Update LineItem quantity in an Order and update the total in both
-
-      iex> OrderCommands.update_line_item_quantity 1, line_item, 2
-      {:ok, %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1,
-      total: #Decimal<20.0>, ...}}
+  Updates a line item quantity in an order.
   """
   def update_line_item_quantity(id, line_item, quantity) do
     order = Repo.get!(Order, id)
@@ -85,11 +67,7 @@ defmodule Nova.Commands.OrderCommands do
   end
 
   @doc """
-  Remove a LineItem from an Order and update its total
-
-      iex> OrderCommands.remove_line_item 1, line_item
-      {:ok, %Nova.Order{__meta__: #Ecto.Schema.Metadata<:loaded>, id: 1,
-      total: #Decimal<0.0>, ...}}
+  Removes a line item from an order.
   """
   def remove_line_item(id, line_item) do
     order = Repo.get!(Order, id)
