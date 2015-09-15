@@ -3,13 +3,20 @@ defmodule Nova.Commands.VariantCommands do
   Provides functions that manipulate `Nova.Variant`.
   """
   alias Nova.Variant
+  alias Nova.Product
   alias Nova.OptionValueVariant
   alias Nova.Repo
 
   @doc """
   Creates a new variant.
   """
-  def create(params \\ %{}) do
+  def create(params) do
+    unless Map.has_key?(params, :price) do
+      if product = Repo.get(Product, params[:product_id]) do
+        params = Map.merge(params, %{price: product.price})
+      end
+    end
+
     Variant.changeset(%Variant{}, params) |> Repo.insert
   end
 

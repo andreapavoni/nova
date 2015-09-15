@@ -2,6 +2,7 @@ defmodule Nova.Commands.VariantCommandsTest do
   use Nova.ModelCase
   alias Nova.Commands.VariantCommands
   alias Nova.Variant
+  alias Nova.Product
 
   setup do
     %{variants: variants} = fixtures(:variants)
@@ -12,10 +13,22 @@ defmodule Nova.Commands.VariantCommandsTest do
     it "creates a variant", ctx do
       params = %{
         price: 120.5,
-        sku: "some content",
+        sku: "SKU-ABC",
         product_id: ctx[:variant].product_id
       }
       assert {:ok, %Variant{}} = VariantCommands.create(params)
+    end
+
+    it "inherits price from product if not provided", ctx do
+      params = %{
+        sku: "SKU-ABC",
+        product_id: ctx[:variant].product_id
+      }
+      product = Repo.get!(Product, ctx[:variant].product_id)
+
+      assert {:ok, variant} = VariantCommands.create(params)
+      assert %Variant{} = variant
+      assert product.price == variant.price
     end
   end
 
