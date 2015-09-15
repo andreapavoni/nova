@@ -18,8 +18,14 @@ defmodule Nova.ProductTest do
     end
 
     context "with invalid attributes" do
-      it "is not valid" do
+      it "is not valid without required attributes" do
         refute Product.changeset(%Product{}, %{}).valid?
+        changeset = Product.changeset(%Product{}, %{})
+
+        refute changeset.valid?
+        assert {:name, "can't be blank"} in changeset.errors
+        assert {:price, "can't be blank"} in changeset.errors
+        assert {:sku, "can't be blank"} in changeset.errors
       end
 
       it "is not valid with name length shorter than 3" do

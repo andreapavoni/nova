@@ -21,8 +21,8 @@ defmodule Nova.Product do
     timestamps
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w(sku description price)
+  @required_fields ~w(name price sku)
+  @optional_fields ~w(description)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

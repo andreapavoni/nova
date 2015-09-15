@@ -13,7 +13,7 @@ defmodule Nova.Queries.VariantQueries do
 
   def with_option_value(query, option_value) do
     from variant in query,
-    left_join: optvalue_variant in assoc(variant, :option_value_variants),
-    join: option_value in assoc(optvalue_variant, :option_value)
+    left_join: opt_val_variant in assoc(variant, :option_value_variants),
+    join: option_value in assoc(opt_val_variant, :option_value)
   end
 end
