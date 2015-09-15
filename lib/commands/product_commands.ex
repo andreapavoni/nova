@@ -4,6 +4,7 @@ defmodule Nova.Commands.ProductCommands do
   """
 
   alias Nova.Product
+  alias Nova.ProductProperty
   alias Nova.Repo
 
   @doc """
@@ -29,6 +30,16 @@ defmodule Nova.Commands.ProductCommands do
   def delete(id) do
     Repo.get!(Product, id)
     |> Repo.delete!
+  end
+
+  @doc """
+  Adds a property to product.
+  """
+  def add_property(id, property_id, value) do
+    ProductProperty.changeset(
+    %ProductProperty{},
+    %{product_id: id, property_id: property_id, value: value})
+    |> Repo.insert
   end
 
 end

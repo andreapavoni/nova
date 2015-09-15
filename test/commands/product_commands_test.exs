@@ -2,6 +2,7 @@ defmodule Nova.Commands.ProductCommandsTest do
   use Nova.ModelCase
   alias Nova.Commands.ProductCommands
   alias Nova.Product
+  alias Nova.ProductProperty
 
   setup do
     %{products: products} = fixtures(:products, insert: false)
@@ -33,6 +34,19 @@ defmodule Nova.Commands.ProductCommandsTest do
 
       assert %Product{} = ProductCommands.delete(products.default.id)
       refute Repo.get(Product, products.default.id)
+    end
+  end
+
+  describe "add_property/3" do
+    it "adds a property to the product" do
+      %{products: products} = fixtures(:products)
+      %{properties: properties} = fixtures(:properties)
+      product = products.default
+      property = properties.default
+
+      assert {:ok, %ProductProperty{}} = ProductCommands.add_property(product.id, property.id, "a value")
+
+
     end
   end
 end
