@@ -25,10 +25,9 @@ got a bit of sorting based on priorities.
 - [x] LineItems (product and quantity for an order)
 
 #### Commands and Queries
-- [ ] CRUD Order
-  - [ ] CRUD LineItem
-  - [ ] Calculate Order total
-
+- [x] CRUD Order
+  - [x] CRUD LineItem
+  - [x] Calculate Order total
 
 ### Users
 - [ ] User basic info (email, password)

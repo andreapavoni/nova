@@ -2,15 +2,17 @@ defmodule Nova.LineItem do
   use Nova.Web, :model
 
   schema "nova_line_items" do
-    field :quantity, :integer
     belongs_to :order, Nova.Order
     belongs_to :variant, Nova.Variant
+
+    field :quantity, :integer
+    field :total, :decimal, default: Decimal.new(0.0)
 
     timestamps
   end
 
   @required_fields ~w(quantity order_id variant_id)
-  @optional_fields ~w()
+  @optional_fields ~w(total)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
