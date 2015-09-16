@@ -5,6 +5,5 @@ elixir:
 - 1.0.1
 - 1.0.2
 otp_release:
-- 17.4
 — 18.0
 script: mix test
