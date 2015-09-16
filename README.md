@@ -1,5 +1,7 @@
 # Nova
 
+[![Build Status](https://travis-ci.org/nebulab/nova.svg)](https://travis-ci.org/nebulab/nova)
+
 An attempt to port/rebuild [Spree](http://spreecommerce.com), an open source e-commerce solution, with [Phoenix](http://www.phoenixframework.org/).
 
 

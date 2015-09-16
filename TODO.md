@@ -14,9 +14,9 @@ got a bit of sorting based on priorities.
 
 #### Commands and Queries
 - [x] CRUD Product
-  - [ ] CRUD OptionType
+  - [x] CRUD OptionType
   - [x] CRUD Variant
-    - [ ] CRUD OptionValue
+    - [x] CRUD OptionValue
   - [x] CRUD Property
 
 ### Orders
