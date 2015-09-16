@@ -49,12 +49,11 @@ defmodule Nova.Commands.VariantCommandsTest do
     end
   end
 
-  describe "add_option_values/2" do
-    it "adds given option_values to the variant", ctx do
-      %{base: base, another: another} = fixtures(:option_values).option_values
+  describe "add_option_value/2" do
+    it "adds an option_value to variant", ctx do
+      opt_val_id = fixtures(:option_values).option_values.base.id
 
-      result = VariantCommands.add_option_values(ctx.variant.id, [base, another])
-      assert [ok: _, ok: _] = result
+      assert {:ok, _} = VariantCommands.add_option_value(ctx.variant.id, opt_val_id)
     end
   end
 end

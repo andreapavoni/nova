@@ -36,8 +36,9 @@ defmodule Nova.Commands.OrderCommands do
   @doc """
   Adds a line item to an order
   """
-  def add_line_item(id, variant, quantity) do
+  def add_line_item(id, variant_id, quantity) do
     order = Repo.get!(Order, id)
+    variant = Repo.get!(Variant, variant_id)
     params = %{
       quantity: quantity,
       order_id: id,
@@ -54,8 +55,9 @@ defmodule Nova.Commands.OrderCommands do
   @doc """
   Updates a line item quantity in an order.
   """
-  def update_line_item_quantity(id, line_item, quantity) do
+  def update_line_item_quantity(id, line_item_id, quantity) do
     order = Repo.get!(Order, id)
+    line_item = Repo.get!(LineItem, line_item_id)
     variant = Repo.get!(Variant, line_item.variant_id)
     line_item_total = D.mult(variant.price, D.new(quantity))
 
@@ -69,8 +71,9 @@ defmodule Nova.Commands.OrderCommands do
   @doc """
   Removes a line item from an order.
   """
-  def remove_line_item(id, line_item) do
+  def remove_line_item(id, line_item_id) do
     order = Repo.get!(Order, id)
+    line_item = Repo.get!(LineItem, line_item_id)
 
     Repo.delete! line_item
     update_total order

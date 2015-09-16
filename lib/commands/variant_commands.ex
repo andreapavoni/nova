@@ -37,15 +37,12 @@ defmodule Nova.Commands.VariantCommands do
   end
 
   @doc """
-  Adds a list of option values to a variant.
+  Adds an option value to a variant.
   """
-  def add_option_values(id, option_values) do
-    for option_value <- option_values do
-      OptionValueVariant.changeset(
-      %OptionValueVariant{},
-      %{option_value_id: option_value.id, variant_id: id})
-      |> Repo.insert
-    end
+  def add_option_value(id, option_value_id) do
+    %OptionValueVariant{}
+    |> OptionValueVariant.changeset(%{option_value_id: option_value_id, variant_id: id})
+    |> Repo.insert
   end
 
 end
