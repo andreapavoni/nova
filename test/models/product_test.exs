@@ -43,8 +43,8 @@ defmodule Nova.ProductTest do
       end
 
       it "does not save with sku not unique" do
-        %{products: products} = fixtures(:products)
-        attrs = Map.merge(@valid_attrs, %{sku: products.default.sku})
+        product = fixtures(:products).products.default
+        attrs = Map.merge(@valid_attrs, %{sku: product.sku})
 
         {:error, changeset} = Product.changeset(%Product{}, attrs) |> Repo.insert
 

@@ -4,15 +4,15 @@ defmodule Nova.Queries.PropertyQueriesTest do
   alias Nova.Property
 
   setup do
-    %{properties: properties} = fixtures(:properties)
+    property = fixtures(:properties).properties.default
 
-    {:ok, property: properties.default}
+    {:ok, property: property}
   end
 
   describe "find_by_id/1" do
     context "when property exists" do
       it "returns the property", ctx do
-        assert %Property{} = PropertyQueries.find_by_id(ctx[:property].id)
+        assert %Property{} = PropertyQueries.find_by_id(ctx.property.id)
       end
     end
   end

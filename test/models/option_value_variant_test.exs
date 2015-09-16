@@ -5,11 +5,11 @@ defmodule Nova.OptionValueVariantTest do
   @attrs %{option_value_id: 1, variant_id: 1}
 
   setup do
-    %{variants: variants} = fixtures(:variants)
-    %{option_values: option_values} = fixtures(:option_values)
+    variant = fixtures(:variants).variants.default
+    option_value = fixtures(:option_values).option_values.default
     attrs = %{
-      option_value_id: option_values.default.id,
-      variant_id: variants.default.id
+      option_value_id: option_value.id,
+      variant_id: variant.id
     }
 
     {:ok, attrs: attrs}
@@ -27,8 +27,8 @@ defmodule Nova.OptionValueVariantTest do
         refute OptionValueVariant.changeset(%OptionValueVariant{}, %{}).valid?
       end
 
-      it "does not save with non existent variant", context do
-        attrs = %{context[:attrs] | variant_id: -1}
+      it "does not save with non existent variant", ctx do
+        attrs = %{ctx.attrs | variant_id: -1}
         {:error, changeset} = %OptionValueVariant{}
                                 |> OptionValueVariant.changeset(attrs)
                                 |> Repo.insert
@@ -37,8 +37,8 @@ defmodule Nova.OptionValueVariantTest do
         assert {:variant_id, "does not exist"} in changeset.errors
       end
 
-      it "does not save with non existent option_value", context do
-        attrs = %{context[:attrs] | option_value_id: -1}
+      it "does not save with non existent option_value", ctx do
+        attrs = %{ctx.attrs | option_value_id: -1}
 
         {:error, changeset} = %OptionValueVariant{}
                                 |> OptionValueVariant.changeset(attrs)

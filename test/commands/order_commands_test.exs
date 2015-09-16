@@ -4,10 +4,10 @@ defmodule Nova.Commands.OrderCommandsTest do
   alias Nova.Order
 
   setup do
-    %{variants: variants} = fixtures(:variants)
-    %{orders: orders} = fixtures(:orders)
+    variant = fixtures(:variants).variants.default
+    order = fixtures(:orders).orders.default
 
-    {:ok, variant: variants.default, order: orders.default}
+    {:ok, variant: variant, order: order}
   end
 
   describe "create/0" do
@@ -19,7 +19,7 @@ defmodule Nova.Commands.OrderCommandsTest do
   describe "update/2" do
     it "updates the order", ctx do
       params = %{total: 10.0}
-      {:ok, order} = OrderCommands.update(ctx[:order].id, params)
+      {:ok, order} = OrderCommands.update(ctx.order.id, params)
 
       assert %Order{} = order
       assert order.total == Decimal.new(10.0)
@@ -28,7 +28,7 @@ defmodule Nova.Commands.OrderCommandsTest do
 
   describe "add_line_item/3" do
     it "adds line_item to the order and updates total", ctx do
-      {order, variant} = {ctx[:order], ctx[:variant]}
+      {order, variant} = {ctx.order, ctx.variant}
       {:ok, order} = OrderCommands.add_line_item(order.id, variant, 1)
 
       assert %Order{} = order
@@ -38,7 +38,7 @@ defmodule Nova.Commands.OrderCommandsTest do
 
   describe "update_line_item_quantity/3" do
     it "updates line_item quantity and updates order total", ctx do
-      {order, variant} = {ctx[:order], ctx[:variant]}
+      {order, variant} = {ctx.order, ctx.variant}
       {:ok, order} = OrderCommands.add_line_item(order.id, variant, 1)
       line_item = hd((order |> Repo.preload([:line_items])).line_items)
 
@@ -52,7 +52,7 @@ defmodule Nova.Commands.OrderCommandsTest do
 
   describe "remove_line_item/2" do
     it "removes line_item and updates order total", ctx do
-      {order, variant} = {ctx[:order], ctx[:variant]}
+      {order, variant} = {ctx.order, ctx.variant}
       {:ok, order} = OrderCommands.add_line_item(order.id, variant, 1)
       line_item = hd((order |> Repo.preload([:line_items])).line_items)
 
@@ -66,7 +66,7 @@ defmodule Nova.Commands.OrderCommandsTest do
   describe "delete/1" do
     it "deletes the order", ctx do
       assert %Order{} = OrderCommands.delete(ctx[:order].id)
-      refute Repo.get(Order, ctx[:order].id)
+      refute Repo.get(Order, ctx.order.id)
     end
   end
 end

@@ -5,11 +5,11 @@ defmodule Nova.OptionTypeProductTest do
   @attrs %{option_type_id: 1, product_id: 1}
 
   setup do
-    %{products: products} = fixtures(:products)
-    %{option_types: option_types} = fixtures(:option_types)
+    product = fixtures(:products).products.default
+    option_type = fixtures(:option_types).option_types.default
     attrs = %{
-      option_type_id: option_types.default.id,
-      product_id: products.default.id
+      option_type_id: option_type.id,
+      product_id: product.id
     }
 
     {:ok, attrs: attrs}
@@ -27,8 +27,8 @@ defmodule Nova.OptionTypeProductTest do
         refute OptionTypeProduct.changeset(%OptionTypeProduct{}, %{}).valid?
       end
 
-      it "does not save with non existent product", context do
-        attrs = %{context[:attrs] | product_id: -1}
+      it "does not save with non existent product", ctx do
+        attrs = %{ctx.attrs | product_id: -1}
         {:error, changeset} = %OptionTypeProduct{}
                                 |> OptionTypeProduct.changeset(attrs)
                                 |> Repo.insert
@@ -37,8 +37,8 @@ defmodule Nova.OptionTypeProductTest do
         assert {:product_id, "does not exist"} in changeset.errors
       end
 
-      it "does not save with non existent option_type", context do
-        attrs = %{context[:attrs] | option_type_id: -1}
+      it "does not save with non existent option_type", ctx do
+        attrs = %{ctx.attrs | option_type_id: -1}
 
         {:error, changeset} = %OptionTypeProduct{}
                                 |> OptionTypeProduct.changeset(attrs)

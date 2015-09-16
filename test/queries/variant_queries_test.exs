@@ -5,10 +5,10 @@ defmodule Nova.Queries.VariantQueriesTest do
   alias Nova.OptionValueVariant
 
   setup do
-    %{variants: variants} = fixtures(:variants)
-    %{option_values: option_values} = fixtures(:option_values)
+    variant = fixtures(:variants).variants.default
+    option_value = fixtures(:option_values).option_values.default
 
-    {:ok, variant: variants.default, option_value: option_values.default}
+    {:ok, variant: variant, option_value: option_value}
   end
 
   describe "find_by_id/1" do
@@ -29,14 +29,14 @@ defmodule Nova.Queries.VariantQueriesTest do
     it "returns a list of variants with given option_value", ctx do
       OptionValueVariant.changeset(
         %OptionValueVariant{},
-        %{option_value_id: ctx[:option_value].id, variant_id: ctx[:variant].id})
+        %{option_value_id: ctx.option_value.id, variant_id: ctx.variant.id})
       |> Repo.insert
 
       results = Variant
-                |> VariantQueries.with_option_value(ctx[:option_value])
+                |> VariantQueries.with_option_value(ctx.option_value)
                 |> Repo.all
 
-      assert results == [ctx[:variant]]
+      assert results == [ctx.variant]
     end
   end
 end

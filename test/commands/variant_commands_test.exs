@@ -5,8 +5,8 @@ defmodule Nova.Commands.VariantCommandsTest do
   alias Nova.Product
 
   setup do
-    %{variants: variants} = fixtures(:variants)
-    {:ok, variant: variants.default}
+    variant = fixtures(:variants).variants.default
+    {:ok, variant: variant}
   end
 
   describe "create/1" do
@@ -14,7 +14,7 @@ defmodule Nova.Commands.VariantCommandsTest do
       params = %{
         price: 120.5,
         sku: "SKU-ABC",
-        product_id: ctx[:variant].product_id
+        product_id: ctx.variant.product_id
       }
       assert {:ok, %Variant{}} = VariantCommands.create(params)
     end
@@ -22,9 +22,9 @@ defmodule Nova.Commands.VariantCommandsTest do
     it "inherits price from product if not provided", ctx do
       params = %{
         sku: "SKU-ABC",
-        product_id: ctx[:variant].product_id
+        product_id: ctx.variant.product_id
       }
-      product = Repo.get!(Product, ctx[:variant].product_id)
+      product = Repo.get!(Product, ctx.variant.product_id)
 
       assert {:ok, variant} = VariantCommands.create(params)
       assert %Variant{} = variant
@@ -34,7 +34,7 @@ defmodule Nova.Commands.VariantCommandsTest do
 
   describe "update/2" do
     it "updates the variant", ctx do
-      {:ok, variant} = VariantCommands.update(ctx[:variant].id, %{sku: "ABC"})
+      {:ok, variant} = VariantCommands.update(ctx.variant.id, %{sku: "ABC"})
 
       assert %Variant{} = variant
       assert variant.sku == "ABC"
@@ -43,17 +43,17 @@ defmodule Nova.Commands.VariantCommandsTest do
 
   describe "delete/1" do
     it "deletes the variant", ctx do
-      assert %Variant{} = VariantCommands.delete(ctx[:variant].id)
+      assert %Variant{} = VariantCommands.delete(ctx.variant.id)
 
-      refute Repo.get(Variant, ctx[:variant].id)
+      refute Repo.get(Variant, ctx.variant.id)
     end
   end
 
   describe "add_option_values/2" do
     it "adds given option_values to the variant", ctx do
-      %{option_values: optvals} = fixtures(:option_values)
+      %{default: default, another: another} = fixtures(:option_values).option_values
 
-      result = VariantCommands.add_option_values(ctx[:variant].id, [optvals.default, optvals.another])
+      result = VariantCommands.add_option_values(ctx.variant.id, [default, another])
       assert [ok: _, ok: _] = result
     end
   end

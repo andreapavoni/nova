@@ -60,10 +60,11 @@ defmodule Nova.OptionValueTest do
       end
 
       it "does not save with name not unique on option_type" do
-        %{option_values: option_values} = fixtures(:option_values)
+        option_value = fixtures(:option_values).option_values.default
+
         attrs = Map.merge(@valid_attrs, %{
-          option_type_id: option_values.default.option_type_id,
-          name: option_values.default.name
+          option_type_id: option_value.option_type_id,
+          name: option_value.name
         })
 
         {:error, changeset} = OptionValue.changeset(%OptionValue{}, attrs) |> Repo.insert

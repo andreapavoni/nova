@@ -4,15 +4,15 @@ defmodule Nova.Queries.OrderQueriesTest do
   alias Nova.Order
 
   setup do
-    %{orders: orders} = fixtures(:orders)
+    order = fixtures(:orders).orders.default
 
-    {:ok, order: orders.default}
+    {:ok, order: order}
   end
 
   describe "find_by_id/1" do
     context "when order exists" do
       it "returns the order", ctx do
-        assert %Order{} = OrderQueries.find_by_id(ctx[:order].id)
+        assert %Order{} = OrderQueries.find_by_id(ctx.order.id)
       end
     end
   end

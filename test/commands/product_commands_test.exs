@@ -4,24 +4,30 @@ defmodule Nova.Commands.ProductCommandsTest do
   alias Nova.Product
   alias Nova.ProductProperty
 
-  setup do
-    %{products: products} = fixtures(:products, insert: false)
+  @product_params %{
+    description: "some content",
+    name: "some content",
+    price: 120.5,
+    sku: "ABC"
+  }
 
-    {:ok, product_params: Map.delete(products.default, :__struct__)}
+  setup do
+    product = fixtures(:products).products.default
+
+    {:ok, product: product}
   end
 
   describe "create/1" do
-    it "creates a new product", ctx do
-      assert {:ok, %Product{}} = ProductCommands.create(ctx[:product_params])
+    it "creates a new product" do
+      assert {:ok, %Product{}} = ProductCommands.create(@product_params)
     end
   end
 
   describe "update/2" do
     it "updates the product", ctx do
-      %{products: products} = fixtures(:products)
-      params = %{ctx[:product_params] | sku: "ABC"}
+      params = %{@product_params | sku: "ABC"}
 
-      {:ok, product} = ProductCommands.update(products.default.id, params)
+      {:ok, product} = ProductCommands.update(ctx.product.id, params)
 
       assert %Product{} = product
       assert product.sku == "ABC"
@@ -29,24 +35,17 @@ defmodule Nova.Commands.ProductCommandsTest do
   end
 
   describe "delete/1" do
-    it "deletes the product" do
-      %{products: products} = fixtures(:products)
-
-      assert %Product{} = ProductCommands.delete(products.default.id)
-      refute Repo.get(Product, products.default.id)
+    it "deletes the product", ctx do
+      assert %Product{} = ProductCommands.delete(ctx.product.id)
+      refute Repo.get(Product, ctx.product.id)
     end
   end
 
   describe "add_property/3" do
-    it "adds a property to the product" do
-      %{products: products} = fixtures(:products)
-      %{properties: properties} = fixtures(:properties)
-      product = products.default
-      property = properties.default
+    it "adds a property to the product", ctx do
+      property = fixtures(:properties).properties.default
 
-      assert {:ok, %ProductProperty{}} = ProductCommands.add_property(product.id, property.id, "a value")
-
-
+      assert {:ok, %ProductProperty{}} = ProductCommands.add_property(ctx.product.id, property.id, "a value")
     end
   end
 end

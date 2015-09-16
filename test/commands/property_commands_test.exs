@@ -4,8 +4,8 @@ defmodule Nova.Commands.PropertyCommandsTest do
   alias Nova.Property
 
   setup do
-    %{properties: properties} = fixtures(:properties)
-    {:ok, property: properties.default}
+    property = fixtures(:properties).properties.default
+    {:ok, property: property}
   end
 
   describe "create/1" do
@@ -22,8 +22,7 @@ defmodule Nova.Commands.PropertyCommandsTest do
   describe "update/2" do
     it "updates the property", ctx do
       params = %{name: "New name"}
-
-      {:ok, property} = PropertyCommands.update(ctx[:property].id, params)
+      {:ok, property} = PropertyCommands.update(ctx.property.id, params)
 
       assert %Property{} = property
       assert property.name == "New name"
@@ -32,9 +31,9 @@ defmodule Nova.Commands.PropertyCommandsTest do
 
   describe "delete/1" do
     it "deletes the property", ctx do
-      assert %Property{} = PropertyCommands.delete(ctx[:property].id)
+      assert %Property{} = PropertyCommands.delete(ctx.property.id)
 
-      refute Repo.get(Property, ctx[:property].id)
+      refute Repo.get(Property, ctx.property.id)
     end
   end
 end

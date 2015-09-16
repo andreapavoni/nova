@@ -6,11 +6,11 @@ defmodule Nova.LineItemTest do
   @invalid_attrs %{quantity: 0}
 
   setup do
-    %{variants: variants} = fixtures(:variants)
-    %{orders: orders} = fixtures(:orders)
+    variant = fixtures(:variants).variants.default
+    order = fixtures(:orders).orders.default
     attrs = %{
-      order_id: orders.default.id,
-      variant_id: variants.default.id,
+      order_id: order.id,
+      variant_id: variant.id,
       quantity: 2
     }
 
@@ -34,8 +34,8 @@ defmodule Nova.LineItemTest do
         assert {:quantity, {"must be greater than %{count}", [count: 0]}} in changeset.errors
       end
 
-      it "does not save with non existent order", context do
-        attrs = %{context[:attrs] | order_id: -1}
+      it "does not save with non existent order", ctx do
+        attrs = %{ctx.attrs | order_id: -1}
         {:error, changeset} = %LineItem{}
         |> LineItem.changeset(attrs)
         |> Repo.insert
@@ -44,8 +44,8 @@ defmodule Nova.LineItemTest do
         assert {:order_id, "does not exist"} in changeset.errors
       end
 
-      it "does not save with non existent variant", context do
-        attrs = %{context[:attrs] | variant_id: -1}
+      it "does not save with non existent variant", ctx do
+        attrs = %{ctx.attrs | variant_id: -1}
         {:error, changeset} = %LineItem{}
         |> LineItem.changeset(attrs)
         |> Repo.insert

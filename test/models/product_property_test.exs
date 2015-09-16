@@ -7,11 +7,11 @@ defmodule Nova.ProductPropertyTest do
   @long_str String.duplicate("a", 201)
 
   setup do
-    %{products: products} = fixtures(:products)
-    %{properties: properties} = fixtures(:properties)
+    product = fixtures(:products).products.default
+    property = fixtures(:properties).properties.default
     attrs = %{
-      property_id: properties.default.id,
-      product_id: products.default.id,
+      property_id: property.id,
+      product_id: product.id,
       value: "test"
     }
 
@@ -37,8 +37,8 @@ defmodule Nova.ProductPropertyTest do
         assert error in errors_on(%ProductProperty{}, attrs)
       end
 
-      it "does not save with non existent product", context do
-        attrs = %{context[:attrs] | product_id: -1}
+      it "does not save with non existent product", ctx do
+        attrs = %{ctx.attrs | product_id: -1}
         {:error, changeset} = %ProductProperty{}
                                 |> ProductProperty.changeset(attrs)
                                 |> Repo.insert
@@ -47,8 +47,8 @@ defmodule Nova.ProductPropertyTest do
         assert {:product_id, "does not exist"} in changeset.errors
       end
 
-      it "does not save with non existent property", context do
-        attrs = %{context[:attrs] | property_id: -1}
+      it "does not save with non existent property", ctx do
+        attrs = %{ctx.attrs | property_id: -1}
         {:error, changeset} = %ProductProperty{}
                                 |> ProductProperty.changeset(attrs)
                                 |> Repo.insert
