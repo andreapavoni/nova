@@ -4,8 +4,8 @@ defmodule Nova.Commands.OrderCommandsTest do
   alias Nova.Order
 
   setup do
-    variant = fixtures(:variants).variants.default
-    order = fixtures(:orders).orders.default
+    variant = fixtures(:variants).variants.base
+    order = fixtures(:orders).orders.base
 
     {:ok, variant: variant, order: order}
   end

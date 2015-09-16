@@ -4,7 +4,7 @@ defmodule Nova.Queries.ProductQueriesTest do
   alias Nova.Product
 
   setup do
-    product = fixtures(:products).products.default
+    product = fixtures(:products).products.base
 
     {:ok, product: product}
   end

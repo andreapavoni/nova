@@ -12,7 +12,7 @@ defmodule Nova.Commands.ProductCommandsTest do
   }
 
   setup do
-    product = fixtures(:products).products.default
+    product = fixtures(:products).products.base
 
     {:ok, product: product}
   end
@@ -43,7 +43,7 @@ defmodule Nova.Commands.ProductCommandsTest do
 
   describe "add_property/3" do
     it "adds a property to the product", ctx do
-      property = fixtures(:properties).properties.default
+      property = fixtures(:properties).properties.base
 
       assert {:ok, %ProductProperty{}} = ProductCommands.add_property(ctx.product.id, property.id, "a value")
     end

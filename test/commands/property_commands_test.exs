@@ -4,7 +4,7 @@ defmodule Nova.Commands.PropertyCommandsTest do
   alias Nova.Property
 
   setup do
-    property = fixtures(:properties).properties.default
+    property = fixtures(:properties).properties.base
     {:ok, property: property}
   end
 

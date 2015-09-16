@@ -6,8 +6,8 @@ defmodule Nova.LineItemTest do
   @invalid_attrs %{quantity: 0}
 
   setup do
-    variant = fixtures(:variants).variants.default
-    order = fixtures(:orders).orders.default
+    variant = fixtures(:variants).variants.base
+    order = fixtures(:orders).orders.base
     attrs = %{
       order_id: order.id,
       variant_id: variant.id,

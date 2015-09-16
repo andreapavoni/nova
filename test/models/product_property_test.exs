@@ -7,8 +7,8 @@ defmodule Nova.ProductPropertyTest do
   @long_str String.duplicate("a", 201)
 
   setup do
-    product = fixtures(:products).products.default
-    property = fixtures(:properties).properties.default
+    product = fixtures(:products).products.base
+    property = fixtures(:properties).properties.base
     attrs = %{
       property_id: property.id,
       product_id: product.id,

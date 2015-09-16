@@ -1,5 +1,5 @@
 products model: Nova.Product, repo: Nova.Repo do
-  default do
+  base do
     name "A default product name"
     description "Lorem ipsum dolor sit product"
     price Decimal.new(10.50)

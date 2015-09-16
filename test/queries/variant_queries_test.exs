@@ -5,8 +5,8 @@ defmodule Nova.Queries.VariantQueriesTest do
   alias Nova.OptionValueVariant
 
   setup do
-    variant = fixtures(:variants).variants.default
-    option_value = fixtures(:option_values).option_values.default
+    variant = fixtures(:variants).variants.base
+    option_value = fixtures(:option_values).option_values.base
 
     {:ok, variant: variant, option_value: option_value}
   end

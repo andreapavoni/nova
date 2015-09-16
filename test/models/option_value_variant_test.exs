@@ -5,8 +5,8 @@ defmodule Nova.OptionValueVariantTest do
   @attrs %{option_value_id: 1, variant_id: 1}
 
   setup do
-    variant = fixtures(:variants).variants.default
-    option_value = fixtures(:option_values).option_values.default
+    variant = fixtures(:variants).variants.base
+    option_value = fixtures(:option_values).option_values.base
     attrs = %{
       option_value_id: option_value.id,
       variant_id: variant.id

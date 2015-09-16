@@ -60,7 +60,7 @@ defmodule Nova.OptionValueTest do
       end
 
       it "does not save with name not unique on option_type" do
-        option_value = fixtures(:option_values).option_values.default
+        option_value = fixtures(:option_values).option_values.base
 
         attrs = Map.merge(@valid_attrs, %{
           option_type_id: option_value.option_type_id,

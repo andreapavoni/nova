@@ -5,7 +5,7 @@ defmodule Nova.Commands.VariantCommandsTest do
   alias Nova.Product
 
   setup do
-    variant = fixtures(:variants).variants.default
+    variant = fixtures(:variants).variants.base
     {:ok, variant: variant}
   end
 
@@ -51,9 +51,9 @@ defmodule Nova.Commands.VariantCommandsTest do
 
   describe "add_option_values/2" do
     it "adds given option_values to the variant", ctx do
-      %{default: default, another: another} = fixtures(:option_values).option_values
+      %{base: base, another: another} = fixtures(:option_values).option_values
 
-      result = VariantCommands.add_option_values(ctx.variant.id, [default, another])
+      result = VariantCommands.add_option_values(ctx.variant.id, [base, another])
       assert [ok: _, ok: _] = result
     end
   end

@@ -5,8 +5,8 @@ defmodule Nova.OptionTypeProductTest do
   @attrs %{option_type_id: 1, product_id: 1}
 
   setup do
-    product = fixtures(:products).products.default
-    option_type = fixtures(:option_types).option_types.default
+    product = fixtures(:products).products.base
+    option_type = fixtures(:option_types).option_types.base
     attrs = %{
       option_type_id: option_type.id,
       product_id: product.id

@@ -4,7 +4,7 @@ defmodule Nova.Queries.OrderQueriesTest do
   alias Nova.Order
 
   setup do
-    order = fixtures(:orders).orders.default
+    order = fixtures(:orders).orders.base
 
     {:ok, order: order}
   end
