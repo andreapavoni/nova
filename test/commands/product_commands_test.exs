@@ -3,6 +3,7 @@ defmodule Nova.Commands.ProductCommandsTest do
   alias Nova.Commands.ProductCommands
   alias Nova.Product
   alias Nova.ProductProperty
+  alias Nova.OptionTypeProduct
 
   @product_params %{
     description: "some content",
@@ -45,7 +46,19 @@ defmodule Nova.Commands.ProductCommandsTest do
     it "adds a property to the product", ctx do
       property = fixtures(:properties).properties.base
 
-      assert {:ok, %ProductProperty{}} = ProductCommands.add_property(ctx.product.id, property.id, "a value")
+      result = ProductCommands.add_property(ctx.product.id, property.id, "a value")
+
+      assert {:ok, %ProductProperty{}} = result
+    end
+  end
+
+  describe "add_option_type/2" do
+    it "adds an option type to the product", ctx do
+      option_type = fixtures(:option_types).option_types.base
+      
+      result = ProductCommands.add_option_type(ctx.product.id, option_type.id)
+
+      assert {:ok, %OptionTypeProduct{}} = result
     end
   end
 end

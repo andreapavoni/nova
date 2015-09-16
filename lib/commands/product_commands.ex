@@ -5,6 +5,7 @@ defmodule Nova.Commands.ProductCommands do
 
   alias Nova.Product
   alias Nova.ProductProperty
+  alias Nova.OptionTypeProduct
   alias Nova.Repo
 
   @doc """
@@ -36,9 +37,19 @@ defmodule Nova.Commands.ProductCommands do
   Adds a property to product.
   """
   def add_property(id, property_id, value) do
-    ProductProperty.changeset(
-    %ProductProperty{},
-    %{product_id: id, property_id: property_id, value: value})
+    params = %{product_id: id, property_id: property_id, value: value}
+
+    %ProductProperty{}
+    |> ProductProperty.changeset(params)
+    |> Repo.insert
+  end
+
+  @doc """
+  Adds an option type to product.
+  """
+  def add_option_type(id, option_type_id) do
+    %OptionTypeProduct{}
+    |> OptionTypeProduct.changeset(%{product_id: id, option_type_id: option_type_id})
     |> Repo.insert
   end
 
