@@ -8,4 +8,6 @@ for {key, value} <- %{
 }, do: System.put_env(key, value)
 EOF
 
-mix test || exit -1
+if [ $# -eq 1 ]; then
+  mix test || exit -1
+fi
