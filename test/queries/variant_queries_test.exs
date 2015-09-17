@@ -36,7 +36,7 @@ defmodule Nova.Queries.VariantQueriesTest do
                 |> VariantQueries.with_option_value(ctx.option_value)
                 |> Repo.all
 
-      assert results == [ctx.variant]
+      assert hd(results).id == ctx.variant.id
     end
   end
 end

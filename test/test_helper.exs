@@ -1,6 +1,5 @@
 ExUnit.configure(exclude: [pending: true])
 
-Faker.start
 ExUnit.start
 
 Mix.Task.run "ecto.create", ["--quiet"]

@@ -32,7 +32,7 @@ defmodule Nova.Commands.OrderCommandsTest do
       {:ok, order} = OrderCommands.add_line_item(order.id, variant.id, 1)
 
       assert %Order{} = order
-      assert order.total == variant.price
+      assert Decimal.compare(order.total, variant.price) == Decimal.new(0)
     end
   end
 
@@ -46,7 +46,7 @@ defmodule Nova.Commands.OrderCommandsTest do
       new_price = Decimal.mult(variant.price, Decimal.new(2))
 
       assert %Order{} = order
-      assert order.total == new_price
+      assert Decimal.compare(order.total, new_price) == Decimal.new(0)
     end
   end
 

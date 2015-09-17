@@ -9,8 +9,7 @@ end
 
 variants model: Nova.Variant, repo: Nova.Repo do
   base do
-    # TODO: remove faker when Decimal scale is fixed
-    price Decimal.new(Faker.Commerce.price)
+    price Decimal.new(20.50)
     sku "SKU_ABC_123V"
     product products.base
   end
