@@ -52,7 +52,7 @@ defmodule Nova.Mixfile do
       {:ex_spec, "~> 0.3.0", only: :test},
       {:faker, "~> 0.5", only: :test},
       # using git version to support fixtures/2
-      {:ecto_fixtures, git: "git@github.com:dockyard/ecto_fixtures.git", ref: "21be22d"}
+      {:ecto_fixtures, git: "https://github.com/dockyard/ecto_fixtures.git", branch: "master"}
     ]
   end
 end
