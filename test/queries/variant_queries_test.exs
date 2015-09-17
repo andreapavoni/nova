@@ -25,7 +25,7 @@ defmodule Nova.Queries.VariantQueriesTest do
     end
   end
 
-  describe "with_option_value/2" do
+  describe "by_option_value/2" do
     it "returns a list of variants with given option_value", ctx do
       OptionValueVariant.changeset(
         %OptionValueVariant{},
@@ -33,7 +33,7 @@ defmodule Nova.Queries.VariantQueriesTest do
       |> Repo.insert
 
       results = Variant
-                |> VariantQueries.with_option_value(ctx.option_value)
+                |> VariantQueries.by_option_value(ctx.option_value)
                 |> Repo.all
 
       assert hd(results).id == ctx.variant.id
