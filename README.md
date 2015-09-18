@@ -47,9 +47,10 @@ Don't know right now, _world domination™_? :-)
 
 ## Setup
 
-  1. Install dependencies with `mix deps.get`
-  2. Copy `.env-example.exs` to `.env.exs`, then edit it to set secret configs
+  1. Copy `.env-example.exs` to `.env.exs`, then edit it to set secret configs
+  2. Install dependencies with `mix deps.get`
   3. Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   4. Run tests with `mix test`
+  5. Install npm dependencies with `npm install`
   5. Start Phoenix endpoint with `mix phoenix.server`
   6. Visit [`localhost:4000`](http://localhost:4000) from your browser
