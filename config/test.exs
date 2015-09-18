@@ -22,4 +22,5 @@ config :nova, Nova.Repo,
   username: System.get_env("NOVA_DB_USER"),
   password: System.get_env("NOVA_DB_PASSWORD"),
   database: "nova_test",
+  port: System.get_env("NOVA_DB_PORT"),
   pool: Ecto.Adapters.SQL.Sandbox
