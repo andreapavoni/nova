@@ -54,3 +54,8 @@ Don't know right now, _world domination™_? :-)
   5. Install npm dependencies with `npm install`
   5. Start Phoenix endpoint with `mix phoenix.server`
   6. Visit [`localhost:4000`](http://localhost:4000) from your browser
+
+## Credits
+* [Nebulab](http://nebulab.it) for the support.
+* [Contributors](https://github.com/nebulab/nova/graphs/contributors).
+* [@olistik](https://olisti.co/) because he solved the [issue #1](https://github.com/nebulab/nova/issues/1) :-)
