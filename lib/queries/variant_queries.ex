@@ -1,4 +1,4 @@
-defmodule Nova.Queries.VariantQueries do
+defmodule Nova.VariantQueries do
   @moduledoc """
   Provides functions to build queries for `Nova.Variant`.
   """

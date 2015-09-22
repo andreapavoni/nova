@@ -1,4 +1,4 @@
-defmodule Nova.Commands.ProductCommands do
+defmodule Nova.ProductCommands do
   @moduledoc """
   Provides functions that manipulate `Nova.Product`.
   """

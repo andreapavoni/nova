@@ -1,6 +1,6 @@
-defmodule Nova.Commands.OrderCommandsTest do
+defmodule Nova.OrderCommandsTest do
   use Nova.ModelCase
-  alias Nova.Commands.OrderCommands
+  alias Nova.OrderCommands
   alias Nova.Order
 
   setup do

@@ -1,4 +1,4 @@
-defmodule Nova.Commands.OrderCommands do
+defmodule Nova.OrderCommands do
   @moduledoc """
   Provides functions that manipulate `Nova.Order`.
   """

@@ -1,6 +1,6 @@
-defmodule Nova.Queries.VariantQueriesTest do
+defmodule Nova.VariantQueriesTest do
   use Nova.ModelCase
-  alias Nova.Queries.VariantQueries
+  alias Nova.VariantQueries
   alias Nova.Variant
   alias Nova.OptionValueVariant
 

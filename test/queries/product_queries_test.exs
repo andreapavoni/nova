@@ -1,6 +1,6 @@
-defmodule Nova.Queries.ProductQueriesTest do
+defmodule Nova.ProductQueriesTest do
   use Nova.ModelCase
-  alias Nova.Queries.ProductQueries
+  alias Nova.ProductQueries
   alias Nova.Product
 
   setup do

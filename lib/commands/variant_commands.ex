@@ -1,4 +1,4 @@
-defmodule Nova.Commands.VariantCommands do
+defmodule Nova.VariantCommands do
   @moduledoc """
   Provides functions that manipulate `Nova.Variant`.
   """

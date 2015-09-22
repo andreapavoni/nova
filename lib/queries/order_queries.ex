@@ -1,4 +1,4 @@
-defmodule Nova.Queries.OrderQueries do
+defmodule Nova.OrderQueries do
   @moduledoc """
   Provides functions to build queries for `Nova.Order`.
   """
