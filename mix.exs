@@ -50,6 +50,7 @@ defmodule Nova.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:cowboy, "~> 1.0"},
       {:ex_spec, "~> 0.3.0", only: :test},
+      {:fsm, "~> 0.2.0"},
       # using git version to support fixtures/2
       {:ecto_fixtures, git: "https://github.com/dockyard/ecto_fixtures.git", branch: "master"}
     ]
