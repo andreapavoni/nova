@@ -1,4 +1,4 @@
-defmodule Nova.Queries.ProductQueries do
+defmodule Nova.ProductQueries do
   @moduledoc """
   Provides functions to build queries for `Nova.Product`.
   """

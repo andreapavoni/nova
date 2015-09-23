@@ -1,4 +1,4 @@
-defmodule Nova.Commands.PropertyCommands do
+defmodule Nova.PropertyCommands do
   @moduledoc """
   Provides functions that manipulate `Nova.Property`.
   """

@@ -1,6 +1,6 @@
-defmodule Nova.Queries.OrderQueriesTest do
+defmodule Nova.OrderQueriesTest do
   use Nova.ModelCase
-  alias Nova.Queries.OrderQueries
+  alias Nova.OrderQueries
   alias Nova.Order
 
   setup do
@@ -26,7 +26,7 @@ defmodule Nova.Queries.OrderQueriesTest do
   describe "with_line_items/1" do
     it "preloads line items in query", ctx do
       variant = fixtures(:variants).variants.base
-      Nova.Commands.OrderCommands.add_line_item ctx.order.id, variant.id, 1
+      Nova.OrderCommands.add_line_item ctx.order.id, variant.id, 1
 
       order = Order |> OrderQueries.with_line_items |> Repo.one
 

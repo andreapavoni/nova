@@ -1,6 +1,6 @@
-defmodule Nova.Commands.ProductCommandsTest do
+defmodule Nova.ProductCommandsTest do
   use Nova.ModelCase
-  alias Nova.Commands.ProductCommands
+  alias Nova.ProductCommands
   alias Nova.Product
   alias Nova.ProductProperty
   alias Nova.OptionTypeProduct

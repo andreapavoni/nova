@@ -1,6 +1,6 @@
-defmodule Nova.Commands.VariantCommandsTest do
+defmodule Nova.VariantCommandsTest do
   use Nova.ModelCase
-  alias Nova.Commands.VariantCommands
+  alias Nova.VariantCommands
   alias Nova.Variant
   alias Nova.Product
 

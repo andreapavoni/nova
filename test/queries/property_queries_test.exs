@@ -1,6 +1,6 @@
-defmodule Nova.Queries.PropertyQueriesTest do
+defmodule Nova.PropertyQueriesTest do
   use Nova.ModelCase
-  alias Nova.Queries.PropertyQueries
+  alias Nova.PropertyQueries
   alias Nova.Property
 
   setup do

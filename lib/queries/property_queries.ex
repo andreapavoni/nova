@@ -1,4 +1,4 @@
-defmodule Nova.Queries.PropertyQueries do
+defmodule Nova.PropertyQueries do
   @moduledoc """
   Provides functions to build queries for `Nova.Property`.
   """

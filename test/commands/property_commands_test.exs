@@ -1,6 +1,6 @@
-defmodule Nova.Commands.PropertyCommandsTest do
+defmodule Nova.PropertyCommandsTest do
   use Nova.ModelCase
-  alias Nova.Commands.PropertyCommands
+  alias Nova.PropertyCommands
   alias Nova.Property
 
   setup do
