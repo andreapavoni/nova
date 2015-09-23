@@ -18,6 +18,10 @@ defmodule Nova.StateMachine do
           end
         end
       end
+
+      def new(state) do
+        %__MODULE__{state: state}
+      end
     end
   end
 end

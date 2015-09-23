@@ -33,4 +33,9 @@ defmodule Nova.StateMachineTest do
       |> TestOrder.next
     end)
   end
+
+  it 'can be initialized with a given state' do
+    order = TestOrder.new :confirm
+    assert(order |> TestOrder.state == :confirm)
+  end
 end
