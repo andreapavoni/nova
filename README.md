@@ -41,9 +41,10 @@ Don't know right now, _world domination™_? :-)
 
 ## Contributing
 1. Be nice with others
-2. Fork this repo
-3. Write code (and tests)
-4. Open a PR
+2. Check [issues](https://github.com/nebulab/nova/issues) or, if your prefer kanban boards, we have [waffle](https://waffle.io/nebulab/nova) too
+3. Fork this repo
+4. Write code (and tests)
+5. Open a PR
 
 ## Setup
 
