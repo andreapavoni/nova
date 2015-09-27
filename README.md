@@ -1,6 +1,6 @@
 # Nova
 
-[![Build Status](https://travis-ci.org/nebulab/nova.svg)](https://travis-ci.org/nebulab/nova)
+[![Build Status](https://travis-ci.org/nebulab/nova.svg)](https://travis-ci.org/nebulab/nova) [![Coverage Status](https://coveralls.io/repos/nebulab/nova/badge.svg?branch=master&service=github)](https://coveralls.io/github/nebulab/nova?branch=master)
 
 An attempt to port/rebuild [Spree](http://spreecommerce.com), an open source e-commerce solution, with [Phoenix](http://www.phoenixframework.org/).
 

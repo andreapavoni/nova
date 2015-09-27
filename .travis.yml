@@ -11,7 +11,8 @@ notifications:
   email: false
 
 script:
-- ./setup_travis_ci.sh test
+- mix test
+
 
 addons:
   postgresql: "9.3"
@@ -23,4 +24,4 @@ before_script:
   - psql -c 'create database nova_test;' -U postgres
 
 after_success:
-  - mix coveralls.travis
+  - "MIX_ENV=test mix do deps.get, compile, coveralls.travis"
