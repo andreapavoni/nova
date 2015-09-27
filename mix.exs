@@ -9,6 +9,7 @@ defmodule Nova.Mixfile do
      compilers: [:phoenix] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     test_coverage: [tool: ExCoveralls],
      deps: deps]
   end
 
@@ -52,7 +53,8 @@ defmodule Nova.Mixfile do
       {:ex_spec, "~> 0.3.0", only: :test},
       # using git version to support fixtures/2
       {:ecto_fixtures, git: "https://github.com/dockyard/ecto_fixtures.git", branch: "master", only: :test},
-      {:dogma, "~> 0.0", only: :dev}
+      {:dogma, "~> 0.0", only: :dev},
+      {:excoveralls, only: ~w(dev test)a}
     ]
   end
 end

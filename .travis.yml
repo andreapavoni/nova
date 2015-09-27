@@ -1,13 +1,26 @@
 language: elixir
+
 elixir:
 - 1.0.5
+- 1.1.0
+
 otp_release:
 - 18.0
+
+notifications:
+  email: false
+
 script:
 - ./setup_travis_ci.sh test
+
 addons:
   postgresql: "9.3"
+
 before_install:
   - ./setup_travis_ci.sh
+
 before_script:
   - psql -c 'create database nova_test;' -U postgres
+
+after_success:
+  - mix coveralls.travis
