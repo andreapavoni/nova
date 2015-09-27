@@ -12,19 +12,21 @@ defmodule Nova.VariantCommands do
   """
   def create(params) do
     unless Map.has_key?(params, :price) do
-      if product = Repo.get(Product, params[:product_id]) do
+      product = Repo.get(Product, params[:product_id])
+      if product do
         params = Map.merge(params, %{price: product.price})
       end
     end
 
-    Variant.changeset(%Variant{}, params) |> Repo.insert
+    %Variant{} |> Variant.changeset(params) |> Repo.insert
   end
 
   @doc """
   Updates a variant.
   """
   def update(id, params) do
-    Repo.get!(Variant, id)
+    Variant
+    |> Repo.get!(id)
     |> Variant.changeset(params)
     |> Repo.update
   end
@@ -33,15 +35,16 @@ defmodule Nova.VariantCommands do
   Deletes a variant.
   """
   def delete(id) do
-    Repo.get!(Variant, id) |> Repo.delete!
+    Variant |> Repo.get!(id) |> Repo.delete!
   end
 
   @doc """
   Adds an option value to a variant.
   """
   def add_option_value(id, option_value_id) do
+    params = %{option_value_id: option_value_id, variant_id: id}
     %OptionValueVariant{}
-    |> OptionValueVariant.changeset(%{option_value_id: option_value_id, variant_id: id})
+    |> OptionValueVariant.changeset(params)
     |> Repo.insert
   end
 

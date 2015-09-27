@@ -12,7 +12,8 @@ defmodule Nova.ProductCommands do
   Creates a new product.
   """
   def create(params \\ %{}) do
-    Product.changeset(%Product{}, params)
+    %Product{}
+    |> Product.changeset(params)
     |> Repo.insert
   end
 
@@ -20,7 +21,8 @@ defmodule Nova.ProductCommands do
   Updates a product.
   """
   def update(id, params) do
-    Repo.get!(Product, id)
+    Product
+    |> Repo.get!(id)
     |> Product.changeset(params)
     |> Repo.update
   end
@@ -29,7 +31,8 @@ defmodule Nova.ProductCommands do
   Deletes a product.
   """
   def delete(id) do
-    Repo.get!(Product, id)
+    Product
+    |> Repo.get!(id)
     |> Repo.delete!
   end
 
@@ -48,8 +51,10 @@ defmodule Nova.ProductCommands do
   Adds an option type to product.
   """
   def add_option_type(id, option_type_id) do
+    params = %{product_id: id, option_type_id: option_type_id}
+
     %OptionTypeProduct{}
-    |> OptionTypeProduct.changeset(%{product_id: id, option_type_id: option_type_id})
+    |> OptionTypeProduct.changeset(params)
     |> Repo.insert
   end
 

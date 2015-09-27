@@ -44,3 +44,8 @@ config :nova, Nova.Repo,
   database: "nova_dev",
   port: System.get_env("NOVA_DB_PORT"),
   pool_size: 10
+
+config :dogma,
+  exclude: [
+    ~r(\Atest/),
+  ]

@@ -10,7 +10,8 @@ defmodule Nova.PropertyCommands do
   Creates a new property.
   """
   def create(params \\ %{}) do
-    Property.changeset(%Property{}, params)
+    %Property{}
+    |> Property.changeset(params)
     |> Repo.insert
   end
 
@@ -18,7 +19,8 @@ defmodule Nova.PropertyCommands do
   Updates a property.
   """
   def update(id, params) do
-    Repo.get!(Property, id)
+    Property
+    |> Repo.get!(id)
     |> Property.changeset(params)
     |> Repo.update
   end
@@ -27,7 +29,8 @@ defmodule Nova.PropertyCommands do
   Deletes a property.
   """
   def delete(id) do
-    Repo.get!(Property, id)
+    Property
+    |> Repo.get!(id)
     |> Repo.delete!
   end
 

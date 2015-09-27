@@ -13,14 +13,15 @@ defmodule Nova.OrderCommands do
   Creates a new order.
   """
   def create do
-    Order.changeset(%Order{}) |> Repo.insert
+    %Order{} |> Order.changeset |> Repo.insert
   end
 
   @doc """
   Deletes an order.
   """
   def delete(id) do
-    Repo.get!(Order, id)
+    Order
+    |> Repo.get!(id)
     |> Repo.delete!
   end
 
@@ -28,7 +29,8 @@ defmodule Nova.OrderCommands do
   Updates an order.
   """
   def update(id, params) do
-    Repo.get!(Order, id)
+    Order
+    |> Repo.get!(id)
     |> Order.changeset(params)
     |> Repo.update
   end
@@ -46,7 +48,7 @@ defmodule Nova.OrderCommands do
       total: D.mult(variant.price, D.new(quantity))
     }
 
-    case LineItem.changeset(%LineItem{}, params) |> Repo.insert do
+    case %LineItem{} |> LineItem.changeset(params) |> Repo.insert do
       {:ok, _} -> update_total(order)
       {:error, changeset} -> {:error, changeset}
     end

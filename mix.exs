@@ -51,7 +51,8 @@ defmodule Nova.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ex_spec, "~> 0.3.0", only: :test},
       # using git version to support fixtures/2
-      {:ecto_fixtures, git: "https://github.com/dockyard/ecto_fixtures.git", branch: "master"}
+      {:ecto_fixtures, git: "https://github.com/dockyard/ecto_fixtures.git", branch: "master", only: :test},
+      {:dogma, "~> 0.0", only: :dev}
     ]
   end
 end
