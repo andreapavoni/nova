@@ -1,7 +1,7 @@
 %{"cowboy": {:hex, :cowboy, "1.0.3"},
   "cowlib": {:hex, :cowlib, "1.0.1"},
   "decimal": {:hex, :decimal, "1.1.0"},
-  "dogma": {:hex, :dogma, "0.0.7"},
+  "dogma": {:hex, :dogma, "0.0.8"},
   "ecto": {:hex, :ecto, "1.0.3"},
   "ecto_fixtures": {:git, "https://github.com/dockyard/ecto_fixtures.git", "21be22d47737626098304768cf661d79bb281301", [branch: "master"]},
   "ex_spec": {:hex, :ex_spec, "0.3.0"},
