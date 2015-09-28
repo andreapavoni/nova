@@ -6,6 +6,7 @@ elixir:
 
 otp_release:
 - 18.0
+- 18.1
 
 notifications:
   email: false
@@ -24,4 +25,4 @@ before_script:
   - psql -c 'create database nova_test;' -U postgres
 
 after_success:
-  - "MIX_ENV=test mix do deps.get, compile, coveralls.travis"
+  - MIX_ENV=test mix do deps.get, compile, coveralls.travis
