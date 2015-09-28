@@ -48,4 +48,5 @@ config :nova, Nova.Repo,
 config :dogma,
   exclude: [
     ~r(\Atest/),
+    ~r(\Aconfig/)
   ]

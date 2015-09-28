@@ -1,4 +1,8 @@
 defmodule Nova.OptionValue do
+  @moduledoc """
+  Represents an option value relative to `Nova.OptionType` and associated to a
+  `Nova.Variant`.
+  """
   use Nova.Web, :model
 
   schema "nova_option_values" do

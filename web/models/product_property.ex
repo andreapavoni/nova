@@ -1,4 +1,5 @@
 defmodule Nova.ProductProperty do
+  @moduledoc false
   use Nova.Web, :model
 
   schema "nova_product_properties" do

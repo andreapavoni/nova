@@ -1,4 +1,7 @@
 defmodule Nova.OptionType do
+  @moduledoc """
+  Represents an option type to be associated to a `Nova.Product`.
+  """
   use Nova.Web, :model
 
   schema "nova_option_types" do

@@ -1,4 +1,5 @@
 defmodule Nova.Router do
+  @moduledoc false
   use Nova.Web, :router
 
   pipeline :browser do

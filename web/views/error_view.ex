@@ -1,4 +1,5 @@
 defmodule Nova.ErrorView do
+  @moduledoc false
   use Nova.Web, :view
 
   def render("404.html", _assigns) do

@@ -1,4 +1,7 @@
 defmodule Nova.Variant do
+  @moduledoc """
+  Represents the product variant to be sold.
+  """
   use Nova.Web, :model
 
   schema "nova_variants" do

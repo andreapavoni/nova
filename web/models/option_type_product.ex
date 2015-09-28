@@ -1,4 +1,5 @@
 defmodule Nova.OptionTypeProduct do
+  @moduledoc false
   use Nova.Web, :model
 
   schema "nova_option_type_products" do

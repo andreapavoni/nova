@@ -1,4 +1,7 @@
 defmodule Nova.Order do
+  @moduledoc """
+  Represents the order made by customers.
+  """
   use Nova.Web, :model
 
   schema "nova_orders" do

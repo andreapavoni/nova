@@ -1,4 +1,5 @@
 defmodule Nova.OptionValueVariant do
+  @moduledoc false
   use Nova.Web, :model
 
   schema "nova_option_value_variants" do

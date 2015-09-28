@@ -1,4 +1,5 @@
 defmodule Nova do
+  @moduledoc false
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html

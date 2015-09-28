@@ -1,4 +1,7 @@
 defmodule Nova.Property do
+  @moduledoc """
+  Represents a property for `Nova.Product`.
+  """
   use Nova.Web, :model
 
   schema "nova_properties" do

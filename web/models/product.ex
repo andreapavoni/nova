@@ -1,4 +1,7 @@
 defmodule Nova.Product do
+  @moduledoc """
+  Represents the generic product. It's then sold/shown through `Nova.Variant`.
+  """
   use Nova.Web, :model
 
   schema "nova_products" do

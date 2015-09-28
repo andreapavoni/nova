@@ -1,4 +1,7 @@
 defmodule Nova.LineItem do
+  @moduledoc """
+  Represents a line item contained in a `Nova.Order`.
+  """
   use Nova.Web, :model
 
   schema "nova_line_items" do
