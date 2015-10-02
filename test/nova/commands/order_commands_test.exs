@@ -29,7 +29,7 @@ defmodule Nova.OrderCommandsTest do
   describe "add_line_item/3" do
     it "adds line_item to the order and updates total", ctx do
       {order, variant} = {ctx.order, ctx.variant}
-      {:ok, order} = OrderCommands.add_line_item(order.id, variant.id, 1)
+      {:ok, order, _} = OrderCommands.add_line_item(order.id, variant.id, 1)
 
       assert %Order{} = order
       assert Decimal.compare(order.total, variant.price) == Decimal.new(0)
@@ -39,10 +39,9 @@ defmodule Nova.OrderCommandsTest do
   describe "update_line_item_quantity/3" do
     it "updates line_item quantity and updates order total", ctx do
       {order, variant} = {ctx.order, ctx.variant}
-      {:ok, order} = OrderCommands.add_line_item(order.id, variant.id, 1)
-      line_item = hd((order |> Repo.preload([:line_items])).line_items)
+      {:ok, order, line_item} = OrderCommands.add_line_item(order.id, variant.id, 1)
 
-      {:ok, order} = OrderCommands.update_line_item_quantity(order.id, line_item.id, 2)
+      {:ok, order, _} = OrderCommands.update_line_item_quantity(order.id, line_item.id, 2)
       new_price = Decimal.mult(variant.price, Decimal.new(2))
 
       assert %Order{} = order
@@ -53,10 +52,9 @@ defmodule Nova.OrderCommandsTest do
   describe "remove_line_item/2" do
     it "removes line_item and updates order total", ctx do
       {order, variant} = {ctx.order, ctx.variant}
-      {:ok, order} = OrderCommands.add_line_item(order.id, variant.id, 1)
-      line_item = hd((order |> Repo.preload([:line_items])).line_items)
+      {:ok, order, line_item} = OrderCommands.add_line_item(order.id, variant.id, 1)
 
-      {:ok, order} = OrderCommands.remove_line_item(order.id, line_item.id)
+      {:ok, order, _} = OrderCommands.remove_line_item(order.id, line_item.id)
 
       assert %Order{} = order
       assert order.total == Decimal.new(0.0)
