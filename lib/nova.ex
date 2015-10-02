@@ -13,7 +13,7 @@ defmodule Nova do
       # Start the Ecto repository
       worker(Nova.Repo, []),
       # Here you could define other workers and supervisors as children
-      # worker(Nova.Worker, [arg1, arg2, arg3]),
+      worker(Commerce.Billing.Worker, payment_settings)
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -27,5 +27,16 @@ defmodule Nova do
   def config_change(changed, _new, removed) do
     Nova.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp payment_settings do
+    config = Application.get_env(:nova, :payment_gateway)
+    type   = Dict.get(config, :type)
+    settings = %{
+      credentials: Dict.get(config, :credentials),
+      default_currency: Dict.get(config, :default_currency)
+    }
+
+    [type, settings, [name: :payment_gateway]]
   end
 end

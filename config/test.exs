@@ -24,3 +24,8 @@ config :nova, Nova.Repo,
   database: "nova_test",
   port: System.get_env("NOVA_DB_PORT"),
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :nova, :payment_gateway,
+  type: Commerce.Billing.Gateways.Bogus,
+  credentials: {"", ""},
+  default_currency: "USD"

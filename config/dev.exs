@@ -45,8 +45,7 @@ config :nova, Nova.Repo,
   port: System.get_env("NOVA_DB_PORT"),
   pool_size: 10
 
-config :dogma,
-  exclude: [
-    ~r(\Atest/),
-    ~r(\Aconfig/)
-  ]
+config :nova, :payment_gateway,
+  type: Commerce.Billing.Gateways.Bogus,
+  credentials: {"", ""},
+  default_currency: "USD"
