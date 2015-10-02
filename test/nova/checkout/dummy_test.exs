@@ -12,8 +12,7 @@ defmodule Nova.Checkout.DummyTest do
   describe "checkout/3" do
     context "when :address is passed" do
       it "goes to next state", ctx do
-        assert {:ok, _, :payment} = TestCart.checkout(ctx.order, :address, [])
-        assert {:ok, _, :complete} = TestCart.checkout(ctx.order, :payment, [])
+        assert {:ok, _, _} = TestCart.checkout(ctx.order, :checkout_step_name, [])
       end
     end
   end
