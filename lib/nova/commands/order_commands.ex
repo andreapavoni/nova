@@ -49,7 +49,9 @@ defmodule Nova.OrderCommands do
     }
 
     case %LineItem{} |> LineItem.changeset(params) |> Repo.insert do
-      {:ok, _} -> update_total(order)
+      {:ok, line_item} ->
+        {:ok,order} = update_total(order)
+        {:ok, order, line_item}
       {:error, changeset} -> {:error, changeset}
     end
   end
@@ -67,7 +69,8 @@ defmodule Nova.OrderCommands do
     |> LineItem.changeset(%{quantity: quantity, total: line_item_total})
     |> Repo.update
 
-    update_total order
+    {:ok, order} = update_total order
+    {:ok, order, line_item}
   end
 
   @doc """
@@ -78,7 +81,8 @@ defmodule Nova.OrderCommands do
     line_item = Repo.get!(LineItem, line_item_id)
 
     Repo.delete! line_item
-    update_total order
+    {:ok, order} = update_total order
+    {:ok, order, line_item}
   end
 
   defp update_total(order) do
