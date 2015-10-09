@@ -2,7 +2,8 @@ defmodule Nova.Checkout.DummyTest do
   use ExSpec
 
   defmodule TestCart do
-    use Nova.Checkout.Dummy
+    alias Nova.Checkout.Dummy
+    defdelegate checkout(order, :checkout_step_name, params), to: Dummy
   end
 
   setup do

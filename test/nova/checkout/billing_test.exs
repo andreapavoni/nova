@@ -2,7 +2,7 @@ defmodule Nova.Checkout.BillingTest do
   use Nova.ModelCase
 
   defmodule TestCart do
-    use Nova.Checkout.Billing
+    defdelegate checkout(order, :billing, params), to: Nova.Checkout.Billing
   end
 
   setup do

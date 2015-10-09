@@ -2,5 +2,5 @@ defmodule Nova.Cart do
   @moduledoc """
   A wrapper module to expose checkout functions.
   """
-  use Nova.Checkout.Billing
+  defdelegate checkout(order, :billing, params), to: Nova.Checkout.Billing
 end
